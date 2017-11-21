@@ -63,8 +63,8 @@ gulp.task('js', function() {
 	         '!assets/js/scripts/jquery.js', // ignoring Jquery - call it in WP by using function or make <script> tag of it
 	         source + 'js/scripts/*.js'
 	         ])
-	.pipe(jshint('./.jshintrc'))
-	.pipe(jshint.reporter('jshint-stylish'))
+	// .pipe(jshint('./.jshintrc'))
+	// .pipe(jshint.reporter('jshint-stylish'))
 	.pipe(concat('scripts.min.js'))
 	.pipe(gulp.dest(source + 'js/'))
 	.pipe(livereload());

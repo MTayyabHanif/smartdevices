@@ -126,6 +126,16 @@ function smartdevices_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+
+
+	/**
+	 * Adding script for live reload for styling purposes.
+	 *
+	 * @todo This script should be removed when shipping out the theme
+	 */
+	wp_register_script( 'livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true );
+	wp_enqueue_script( 'livereload' );
 }
 add_action( 'wp_enqueue_scripts', 'smartdevices_scripts' );
 
