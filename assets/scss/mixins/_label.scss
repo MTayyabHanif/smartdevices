@@ -1,0 +1,12 @@
+// Mixin to create new button.
+
+@mixin label($color-text, $color-back){
+	background: $color-back;
+	color: $color-text;
+
+	&.outline {
+		background: none;
+		border-color: $color-back;
+		color: $color-back;
+	}
+}

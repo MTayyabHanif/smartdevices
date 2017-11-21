@@ -50,7 +50,7 @@ imagemin       	= require('gulp-imagemin'),
 livereload    	= require('gulp-livereload'),
 
 rootDir 		= './',
-source 		= 'assets/',
+source 		= './assets/',
 
 destination 	= 'assets/distribution/';
 

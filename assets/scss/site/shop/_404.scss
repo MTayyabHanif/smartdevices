@@ -1,0 +1,30 @@
+
+/**
+ * 404 Styles
+ */
+.error404 {
+	.site-content .widget_product_search {
+		background-color: rgba(#000,.025);
+
+		form {
+			margin: 0;
+		}
+	}
+
+	&.right-sidebar .content-area,
+	&.left-sidebar .content-area {
+		width: 100%;
+	}
+
+	.fourohfour-columns-2 {
+		@include clearfix;
+		border: 1px solid $color-blueishlightGray;
+		border-width: 1px 0;
+
+		ul.products,
+		ul.products li.product,
+		.widget {
+			margin-bottom: 0;
+		}
+	}
+}

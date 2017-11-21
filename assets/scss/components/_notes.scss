@@ -1,0 +1,64 @@
+.info-note {
+    font-family: $monospace;
+    background: $color-silver;
+    color: $color-text;
+    padding: 1rem;
+    padding-right: 2.5em;
+    padding-bottom: .75rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    & a {
+        color: inherit;
+    }
+    & p {
+        margin: 0;
+        margin-bottom: 1rem;
+        padding: 0;
+        max-width: 100%;
+    }
+    hr{
+        background-color: rgba(#000, 0.15)
+    }
+    h1,h2,h3,h4,h5,h6 {
+        font-family: $heading;
+    }
+    p {
+        font-family: $base-font;
+    }
+    & .close {
+        position: absolute;
+        right: 0.6rem;
+        top: 1rem;
+        padding: 4px;
+    }
+    .note-heading{
+        font-size: 1.5rem;
+        line-height: normal;
+        margin: 0;
+        margin-bottom: .5rem;
+    }
+}
+.info-note.error {
+    background: $color-error;
+    color: #fff;
+}
+.info-note.success {
+    background: $color-success;
+    color: #fff;
+}
+.info-note.warning {
+    background: $color-warning;
+    color: #fff;
+}
+.info-note.focus {
+    background: $color-focus;
+    color: #fff;
+}
+.info-note.black {
+    background: $color-black;
+    color: #fff;
+}
+.info-note.inverted {
+    background: $white;
+}

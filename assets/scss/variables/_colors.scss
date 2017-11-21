@@ -1,0 +1,70 @@
+// A beautiful selection of our branded colors
+//
+// Styleguide
+
+// primary colors
+$primary:       #0052CC !default;
+$primary-light:  lighten($primary, 10%) !default;
+$primary-dark:  darken($primary, 5%) !default;
+
+$secondary:       #172B4D !default;
+$secondary-light:  lighten($secondary, 10%) !default;
+$secondary-dark:  darken($secondary, 5%) !default;
+
+.color-primary{color: $primary;}
+.color-secondary{color: $secondary;}
+
+.bg-primary{background-color: $primary;}
+.bg-secondary{background-color: $secondary;}
+
+
+$link:          #4076D4 !default;
+$link--visited: #9140D4 !default;
+$link--hover:   darken($link, 5%) !default;
+$link--active:  #1c86f2 !default;
+
+
+// light shades
+$color-lightshade1:         #cdcdce !default;
+$color-lightshade2:         #dededf !default;
+$color-lightshade3:         #efeff0 !default;
+$color-lightshade4:         #f9f9f9 !default;
+$color-lightshade5:         #fbfbfb !default;
+
+// extras
+$color-highlight: #e8f1fd !default;
+$white: #fff;
+
+
+// Grayscale
+// FOR THE PURPOSE OF TRAINSANE - changing black/text color to dark blueish
+$color-black: #1e2834 !default;
+$black: $color-black;
+$color-text: $color-black;
+
+$color-nearblack: #373737 !default;
+$color-darkgray: #505050 !default;
+$color-midgray: #676b72 !default;
+$color-gray: #bdbdbd !default;
+
+//for text on white BG
+$color-blueishGray: #a8b2ba !default;
+$color-blueishlightGray: #83969f !default;
+
+$color-lightgray: #d4d4d4 !default;
+$color-silver: #e0e1e1 !default;
+$color-aluminum: #f8f8f8 !default;
+
+
+// States
+$color-error: #ff4c24 !default;
+$error: $color-error;
+
+$color-success: #36B37E !default;
+$success: $color-success;
+
+$color-warning: #FFAB00 !default;
+$warning: $color-warning;
+
+$color-focus: #2684FF !default;
+$focus: $color-focus;

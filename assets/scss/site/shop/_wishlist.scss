@@ -1,0 +1,26 @@
+.tinv-wishlist {
+	.tinv-header{
+		display: none
+	}
+	.tinvwl-table-manage-list{
+		.discount-off{display: none}
+		.product-action {
+			width: 165px;
+			text-align: center;
+		}
+		.product-price * {
+			text-decoration: none;
+		}
+		.product-price del{
+			color: #c3c3c3;
+			text-decoration: line-through;
+		}
+		.product-cb{
+			input[type=checkbox] {
+				margin-right: 0;
+				-webkit-appearance: checkbox;
+				-moz-appearance: checkbox;
+			}
+		}
+	}
+}

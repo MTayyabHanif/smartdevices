@@ -1,0 +1,25 @@
+ body.page {
+ 	main#main { 
+ 		margin: 1rem 2rem;
+ 		background-color: #fff;
+ 		@media screen and (max-width: 600px) {
+ 			margin: 0 0 2rem;
+ 		}
+ 		div.type-page {
+ 			padding: 2rem;
+ 			@media screen and (max-width: 600px) {
+ 				padding: 1rem;
+ 			}
+ 		}
+
+ 		h1.entry-title {
+ 			margin-top: 1rem;
+ 			font-weight: 300;
+ 			font-size: 3rem;
+ 		}
+ 	}
+ 	#primary.is_cart,
+ 	#primary.is_checkout{
+ 		max-width: 68rem;
+ 	}
+ }

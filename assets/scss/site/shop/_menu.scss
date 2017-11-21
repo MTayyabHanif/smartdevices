@@ -1,0 +1,281 @@
+
+/**
+ * Menus
+ *
+ * 1 - We have to use a `left` declaration so that dropdowns are revealed when tabbed.
+ */
+ .menu-toggle,
+ .handheld-navigation,
+ .main-navigation.toggled .handheld-navigation,
+ .main-navigation.toggled div.menu {
+ 	display: none;
+ }
+
+ .primary-navigation {
+ 	display: block;
+ }
+
+ .main-navigation,
+ .secondary-navigation {
+ 	clear: both;
+ 	display: block;
+ 	width: 100%;
+		// first level
+		ul {
+			list-style: none;
+			margin: 0;
+			padding-left: 0;
+			display: block;
+
+			li {
+				position: relative;
+				display: inline-block;
+				text-align: left;
+
+				a{
+					display: block;
+					font-weight: 500;
+					margin-right: 10px;
+					span{
+						margin-left: 4px;
+						vertical-align: -2px;
+					}
+					&:after{
+						content: "";
+						position: relative;
+						bottom: 4px;
+						width: 0%;
+						height: 2px;
+						background-color: $black;
+						display: block;
+						margin: 0 auto;
+						transition: width .25s ease-in-out;
+					}
+					&:hover:after{
+						width: 100%;
+					}
+					&:before {
+						display: none;
+					}
+				}
+
+				// link hover
+				&:hover,
+				&.focus {
+					> ul {
+						left: 0;
+						display: block;
+
+						li {
+							> ul {
+								left: -9999px; /* 1 */
+
+								&.sub-menu--is-touch-device {
+									display: none;
+									left: 0;
+								}
+							}
+
+							&:hover,
+							&.focus {
+								> ul {
+									left: 100%;
+									top: 0;
+									display: block;
+								}
+							}
+						}
+					}
+				}
+
+			}
+
+			// second level
+			ul {
+				float: left;
+				position: absolute;
+				top: 100%;
+				z-index: 99999;
+				left: -9999px; /* 1 */
+
+				&.sub-menu--is-touch-device {
+					display: none;
+					left: 0;
+				}
+
+				li {
+					display: block;
+
+					a {
+						width: 200px;
+					}
+				}
+			}
+		}
+
+	}
+
+	ul.menu {
+		li {
+			&.current-menu-item {
+				> a {
+					border: 2px solid #333;
+					line-height: 2;
+					padding: 0 12px;
+					&:hover:after{width:0%}
+				}
+			}
+		}
+	}
+
+/**
+ * Primary Navigation
+ */
+ .storefront-primary-navigation {
+ 	clear: both;
+ 	@include clearfix;
+ }
+
+ .main-navigation {
+ 	div.menu {
+ 		display: block;
+ 	}
+
+ 	ul.menu,
+ 	ul.nav-menu {
+ 		max-height: none;
+ 		overflow: visible;
+
+ 		> li {
+				// The first level menu item
+				> a {
+				}
+
+				&:first-child {
+				}
+
+				&.menu-item-has-children,
+				&.page_item_has_children {
+					&:hover {
+						&:after {
+							display: block;
+						}
+					}
+					>a:hover:after{width: 0%}
+
+				}
+			}
+
+			ul {
+				// Dropdowns
+				margin-left: 0;
+
+				li {
+					a {
+						font-weight: 400;
+					}
+
+					&:last-child {
+						border-bottom: 0;
+					}
+				}
+
+				ul {
+					margin-left: 0;
+					box-shadow: none;
+				}
+
+				a:hover,
+				li:hover > a,
+				li.focus {
+					background-color: rgba(0,0,0,0.025);
+				}
+			}
+		}
+
+		a {
+		}
+	}
+
+/**
+ * Secondary Navigation
+ */
+ .secondary-navigation {
+ 	width: auto;
+ 	clear: none;
+ 	line-height: 1;
+
+ 	.menu {
+ 		width: auto;
+ 		float: right;
+
+ 		> li:hover > a {
+ 			text-decoration: none;
+ 		}
+
+ 		ul {
+ 			a {
+ 				background: rgba(#000,0.05);
+ 			}
+
+ 			li:first-child a {
+ 				padding-top: 1em;
+ 			}
+
+ 			li:last-child a {
+ 				padding-bottom: 1em;
+ 			}
+
+ 			ul {
+ 			}
+ 		}
+
+ 		a {
+ 			color: lighten( $color-black, 20% );
+ 			font-weight: 400;
+
+ 			&:hover {
+ 				text-decoration: none;
+ 			}
+ 		}
+ 	}
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * MEGA MENU STYLES
+ */
+ @media screen and (min-width: 768px) {
+ 	#site-navigation {
+ 		ul li.smm-active ul.sub-menu{
+ 			top: 74px;
+ 		}
+ 		.smm-mega-menu{padding: 0.6rem 2.618em 2.618em;}
+ 		ul li.smm-active .widget h3.widget-title{
+ 			font-size: 1.2em;
+ 			margin: 0 0 0.6rem;
+ 			color: #333;
+ 		}
+ 	}
+ }

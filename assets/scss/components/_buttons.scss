@@ -1,0 +1,161 @@
+/*
+
+Buttons
+
+Buttons and their variations
+
+Markup:
+<button class="button {{modifier_class}}">Button</a>
+<a href="#" class="button {{modifier_class}}">Button</a>
+
+.button       - A link that's sized like a button
+
+*/
+
+
+.button {
+	-moz-box-sizing: border-box;
+	-ms-flex-align: baseline;
+	-webkit-align-items: baseline;
+	-webkit-box-align: baseline;
+	align-items: baseline;
+	background-color: $color-lightshade3;
+	border-radius: 3px;
+	border-width: 0;
+	box-sizing: border-box;
+	color: $color-black;
+	cursor: pointer;
+	display: -moz-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-box;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	font-size: inherit;
+	font-style: normal;
+	font-weight: 400;
+	min-height: 2.2857142857142856em;
+	line-height: 2.2857142857142856em;
+	margin: 0;
+	max-width: 100%;
+	outline: none !important;
+	padding: 0 12px;
+	pointer-events: auto;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: auto;
+	transition: all .15s ease-in-out;
+	margin-right: 14px;
+	&:only-child{
+		margin-right: 0;
+	}
+	i, .icon {
+		position: relative;
+		top: 1px;
+		margin: 0 6px;
+	}
+
+	&:hover, &:focus, &:active {
+		background-color: $color-lightshade2;
+	}
+
+	&:focus{
+		outline: .01rem dotted $color-midgray;
+	}
+	&.outline{
+		min-height: 2.02857142857142856em;
+		line-height: 2.02857142857142856em;
+	}
+	&[disabled], [type=submit][disabled]{
+		color: $white;
+	}
+}
+a.button{
+	color: $primary;
+	background: none !important;
+	&:hover, &:focus, &:active {
+		color: $primary-light;
+		text-decoration: underline;
+	}
+	&:visited{
+		color: $primary;
+	}
+	&.primary{
+		color: $primary;
+		background: none !important;
+		&:hover, &:focus, &:active {
+			color: $primary-light;
+			text-decoration: underline;
+		}
+		&:visited{
+			color: $primary;
+		}
+	}
+	&.secondary{
+		color: $secondary;
+		background: none !important;
+		&:hover, &:focus, &:active {
+			color: $secondary-light;
+			text-decoration: underline;
+		}
+		&:visited{
+			color: $secondary;
+		}
+	}
+}
+
+[type=button],
+[type=submit],
+button{
+	@extend .button;
+}
+
+.button.outline {
+	background: transparent !important;
+	box-shadow: 0 0 0px 2px $color-text;
+	color: $color-text;
+
+	&:focus, &:hover, &:active {
+		box-shadow: 0 0 0px 2px lighten($color-text, 30%);
+		color: lighten($color-text, 30%);
+	}
+}
+
+.button.round {
+	border-radius: 56px;
+	padding: 0 16px;
+}
+
+.button.raised:not(.outline){
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+	0 3px 1px -2px rgba(0,0,0,.2),
+	0 1px 5px 0 rgba(0,0,0,.12);
+	&:hover{
+		box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),
+		0 1px 10px 0 rgba(0,0,0,.08),
+		0px 9px 20px 3px rgba(0,0,0,.08)
+	}
+}
+
+
+.button.block {
+	display: block;
+	width: 100%;
+	padding: 2px 12px;
+}
+
+// Primary
+.button.primary {
+	@include button($white, $primary);
+}
+
+/* Secondary */
+.button.secondary {
+	@include button($white, $secondary);
+}
+
+// Inverted
+.button.inverted {
+	@include button($black, $white);
+}

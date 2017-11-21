@@ -1,0 +1,29 @@
+div.post.type-post.status-publish{
+	background-color: $white;
+	margin: 1rem 0 1rem 2rem;
+	padding: 3rem;
+	.post-title{
+		margin-top: 0;
+	}
+	.post-meta {
+		font-size: 0.69rem;
+		font-weight: 800;
+		text-align: center;
+		color: #8cabbd;
+		margin: 1rem auto;
+		text-transform: uppercase;
+
+		time.updated {
+			display: none;
+		}
+
+		a {
+			color: #567b91;
+			text-decoration: none;
+			&:hover{
+				color: $primary;
+			}
+		}
+	}
+
+}

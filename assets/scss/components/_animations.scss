@@ -1,0 +1,63 @@
+@-webkit-keyframes floating {
+	from {-webkit-transform:translate(0, 0px);}
+	65% {-webkit-transform:translate(0, 15px);}
+	to {-webkit-transform: translate(0, -0px);    }    
+}
+
+@-moz-keyframes floating {
+	from {-moz-transform:translate(0, 0px);}
+	65% {-moz-transform:translate(0, 15px);}
+	to {-moz-transform: translate(0, -0px);}    
+}
+.floating {
+	-webkit-animation-name: floating;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease-in-out;
+	-moz-animation-name: floating;
+	-moz-animation-duration: 3s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: ease-in-out;
+}
+
+
+
+
+.fade{
+	opacity:0;
+	-webkit-transition:opacity 0.15s linear;
+	-o-transition:opacity 0.15s linear;
+	transition:opacity 0.15s linear
+}
+.fade.in{
+	opacity:1
+}
+.fade.out{
+	opacity:0
+}
+
+
+
+
+@keyframes shake{
+	10%,90%{
+		transform:translate3d(-1px,0,0)
+	}
+	20%,80%{
+		transform:translate3d(2px,0,0)
+	}
+	30%,50%,70%{
+		transform:translate3d(-4px,0,0)
+	}
+	40%,60%{
+		transform:translate3d(4px,0,0)
+	}
+}
+
+
+@keyframes spinner {
+	to{transform:rotate(360deg)}
+}
+@-webkit-keyframes spinner{
+	to{-webkit-transform:rotate(360deg)}
+}

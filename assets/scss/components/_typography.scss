@@ -1,0 +1,265 @@
+html{
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	box-sizing: border-box;
+	color: $black;
+	font-family: $system-font;
+	line-height: $line-height;
+	min-height: 100%;
+	position: relative;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+body, html{
+	@include rem(font-size, $font-size);
+	@media screen and (max-width: 40em) {
+		@include rem(font-size, $font-size--smaller);
+	}
+}
+html.fonts-loaded, body.fonts-loaded, .fonts-loaded body, .fonts-loaded * {
+	font-family: $base-font;
+}
+
+$magic-num: 28px;
+h1,.alpha, h2,.beta, h3,.gamma, h4,.delta, h5,.epsilon, h6,.zeta, .heading, .heading-sub,
+p, pre, article, blockquote{
+	margin-bottom: $magic-num
+}
+
+
+hr{
+	border: none;
+	border-bottom: 1px solid $color-lightshade1;
+	margin-bottom: 20px;
+}
+
+
+//Paragraphs
+p{
+	margin-top: 0;
+	line-height: $font-size * $line-height;
+	@media screen and (max-width: 40em) {
+		@include rem(font-size, $font-size + 2);
+		line-height: $font-size--smaller * $line-height;
+	}
+}
+
+@media screen and (min-width: 40em) {
+	p {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 684px;
+		max-width: 38rem;
+	}
+}
+
+/* Headings
+========================================================================== */
+h1,h2,h3,h4,h5,h6 {
+	--x-height-multiplier: 0.342;
+	--baseline-multiplier: 0.22;
+	text-rendering: optimizeLegibility;
+	font-weight: 300;
+}
+h1,.alpha {
+	@include rem(font-size, 36px);
+	line-height: 36px * $line-height;
+}
+
+h2,.beta {
+	@include rem(font-size, 32px);
+	line-height: 32px * $line-height;
+	@media screen and (max-width: 40em) {
+		line-height: 32px * 1.218;
+	}
+}
+
+h3,.gamma {
+	@include rem(font-size, 24px);
+	@media screen and (max-width: 40em) {
+		line-height: 24px * 1.218;
+	}
+}
+
+h4,.delta {
+	@include rem(font-size, 20px);
+	line-height: 20px * $line-height;
+}
+
+h5,.epsilon {
+	@include rem(font-size, 16px);
+	line-height: 16px * $line-height;
+}
+
+h6,.zeta {
+	@include rem(font-size, 14px);
+	line-height: 14px * $line-height;
+}
+
+
+.heading {
+	@include rem(font-size, 22px);
+	line-height: 22px * $line-height;
+}
+
+.heading-sub {
+	@include rem(font-size, 16px);
+	line-height: 16px * $line-height;
+	font-weight: 600;
+	margin-bottom: 0;
+	color: #333
+}
+
+
+
+//pre CODE
+
+code{
+	padding: .2rem .4rem;
+	font-size: 90%;
+	color: #bd4147;
+	background-color: #f8f9fa;
+	border-radius: .25rem;
+	white-space: pre-wrap;
+	vertical-align: -5px;
+	display: inline-block;
+}
+pre {
+	border-radius: 2px;
+	tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	-webkit-tab-size: 4;
+	overflow-y: hidden;
+	overflow-x: auto;
+	padding: 1.6rem 1rem;
+	margin: 0 0 2.4rem;
+	@include rem(font-size, $pre-font-size);
+
+	code,
+	samp,
+	kbd{
+		font-size: inherit;
+		margin: 0 !important;
+		background-color: transparent;
+		border: none;
+		line-height: 1.7;
+		border-radius: 0;
+		color: inherit;
+		padding: 0 !important;
+	}
+}
+
+
+
+
+
+
+
+/* Links
+========================================================================== */
+a {
+	background: transparent;
+	color: $color-text;
+	transition: all .18s;
+}
+a:active {
+	color: $link--active;
+}
+figcaption {
+	color: #222;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 0;
+	line-height: 26px;
+	line-height: 1.625rem
+}
+
+
+cite {
+	font-style: normal
+}
+
+ol li,ul li {
+	margin-bottom: 0
+}
+ul,
+ul ul,
+ul ol,
+ol,
+ol ul,
+ol ol {
+	margin: 0 0 0 24px;
+}
+small {
+	line-height: 13px;
+	line-height: .8125rem
+}
+
+article,body>footer {
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+//blockquotes
+blockquote{
+	border-left: .3rem solid $color-midgray;
+	padding: 1.8rem  1.4375rem;
+	font-style: italic;
+	color: $color-midgray;
+	background-color: $color-lightshade4;
+	margin: 0 0 $magic-num;
+	&:only-child{
+		margin: 0;
+	}
+	@include rem(font-size, $blockquote-font-size);
+	p{
+		max-width: 100%;
+		padding: 0;
+		margin: 0;
+		line-height: 22px;
+	}
+	p:last-child{
+		padding-bottom: 0;
+	}
+}
+
+cite {
+	display: block;
+	font-size: 74.5%;
+	font-style: normal;
+	margin-top: 20px;
+}
+
+figure blockquote {
+	padding: 26px 0px;
+	padding: 1.625rem 0rem;
+}
+figure blockquote p {
+	@include rem(font-size, 27px);
+	line-height: 39px;
+	line-height: 2.4375rem;
+}
+@media screen and (min-width: 40em) {
+	figure blockquote {
+		padding: 62px 0px 31px;
+		padding: 3.444444444444445rem 0rem 1.722222222222222rem;
+		text-align: center;
+	}
+	figure blockquote p {
+		font-size: 27px;
+		font-size: 1.6875rem;
+		line-height: 46.5px;
+		line-height: 2.583333333333334rem;
+	}
+}

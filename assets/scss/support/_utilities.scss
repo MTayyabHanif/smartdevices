@@ -1,0 +1,526 @@
+/*
+
+Utilities
+
+These utility classes have one or two CSS properties that are meant to save you from creating several identical classes to do the same thing, like just centering some text.
+
+Markup:
+<div class="{{modifier_class}}" >
+	Example Text
+</div>
+
+.disabled                	- Disable an Element
+.smooth                 	- Smoothed font rendering
+
+.float-none                   	- float: none;
+.float-left                		- float: left;
+.float-center                	- margin-left: auto;  margin-right: auto;
+.float-right                 		- float: right;
+.clearfix                		- Clear floats to keep the parent container in shape
+
+.med-width                	- max-width  980px
+.large-width                	- max-width  1180px
+.full-width                	- width & max width 100%
+.max-full-width           	-  max width 100%
+
+.display-block             	- block
+.display-inlineBlock       - inline-block
+.display-inline               	- inline
+.display-none              	- none
+
+.extra-letter-spacing	- .1rem letterspacing
+.uppercase             	- text transform uppercase
+
+.text-left                 	- text-align: left;
+.text-center               	- text-align: center;
+.text-right                	- text-align: right;
+
+.hide-mobile		- hidden after 64em
+.hide-desktop 		- hidden before 64em
+
+Styleguide 4.0
+
+*/
+
+
+.no-decoration{text-decoration: none;}
+
+
+.clearfix{
+	clear: both;
+	overflow: hidden;
+	&:after{
+		clear: both;
+		content: '';
+		display: table;
+	}
+}
+
+
+// widths
+.full-width {
+	max-width: 100% !important;
+}
+
+
+
+
+
+// transform
+.rotate-45 {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	display: inline-block;
+}
+.rotate-90 {
+	display: inline-block;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+
+
+
+
+//text cases
+.uppercase {	text-transform: uppercase !important;}
+.lowercase {	text-transform: lowercase !important;}
+
+
+
+
+//alignments
+.text-left{text-align: left !important;}
+.text-center{text-align: center !important;}
+.text-right{text-align: right !important;}
+.text-justify{text-align: justify !important;}
+.text-center-justify{text-align: justify !important;	-moz-text-align-last: center !important;text-align-last: center !important;}
+
+
+
+
+
+//positions
+.position-fix{position: fixed !important;}
+.position-abs{position: absolute !important;}
+.position-rel{position: relative !important;}
+.position-normal, .position-static{position: static !important;}
+
+
+//hiding
+.hide-mobile {@media screen and (max-width: 768px) {display: none}}
+.hide-desktop {@media screen and (max-width: 768px) {display: none}}
+/*
+
+Type Utilities
+
+These are specific typography related utilities
+
+Markup:
+<div class="type {{modifier_class}}">
+	The quick brown fox jumps over the lazy dog.
+</div>
+
+.huge            			- Max Larger than the default font size
+.large            			- Larger than the default font size
+.medium or .base            - Exactly the default font size
+.small            			- Smaller than the default font size
+.tiny            			- Much smaller than the default font size
+
+.lightest            - Changes the type to be 100 weight
+.light            - Changes the type to be 300 weight
+.normal           - Changes the type to be 400 weight
+.semibold         - Changes the type to be 600 weight
+.bold             - Changes the type to be 700 weight
+
+
+.muted  	 		- Add muted color to text
+
+.black 			- Adds black color to text - more than #333
+.end 				- Remove margin bottom
+
+.highlight 			- Adds highlighting color to text
+
+.nowrap 			- No-wraps a
+.white-wrap		- white spaces shown
+
+
+*/
+
+
+//font-sizes
+.huge{
+	font-size: $font-size--huge;
+	line-height: $font-size--huge * $line-height;
+}
+.large{
+	font-size: $font-size--large;
+	line-height: $font-size--large * $line-height;
+}
+.base, .medium{
+	font-size: $font-size--medium;
+	line-height: $font-size--medium * $line-height;
+}
+.small{
+	font-size: $font-size--small;
+	line-height: $font-size--small * $line-height;
+}
+.tiny{
+	font-size: $font-size--tiny;
+	line-height: $font-size--tiny * $line-height;
+}
+
+
+//font-weight
+.fw-1{font-weight: 100 !important; }
+.fw-2{font-weight: 200 !important; }
+.fw-3{font-weight: 300 !important; }
+.fw-4{font-weight: 400 !important; }
+.fw-5{font-weight: 500 !important; }
+.fw-6{font-weight: 600 !important; }
+.fw-7{font-weight: 700 !important; }
+.fw-8{font-weight: 800 !important; }
+.fs-italic{font-style: italic !important;}
+.fs-norma{font-style: normal !important;}
+
+
+
+// font variations
+.muted {opacity: .55 !important;}
+a.muted {
+	color: #0d0d0e;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+
+.disabled{
+	cursor: default !important;
+	opacity: .5 !important;
+	pointer-events: none !important;
+}
+
+.smooth{
+	-moz-osx-font-smoothing: grayscale !important;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+.highlight {
+	background-color: $color-highlight;
+}
+
+.nowrap,
+.nowrap td {
+	white-space: nowrap;
+}
+
+.white-wrap{
+	white-space: pre;
+	@media screen and (max-width: 640px) {
+		white-space: normal;
+	}
+}
+
+
+
+
+/*
+
+.close				- makes a simple X button
+.video-container 		- can be used for responsive videos
+
+*/
+
+.close, %close_Icon {
+	font-family: 'themify';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: inline-block;
+	min-height: 16px;
+	min-width: 16px;
+	line-height: 16px;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 12px;
+	padding: 2px;
+	opacity: .6;
+	&:hover {
+		opacity: 1;
+		cursor: pointer;
+		background-color: rgba(#333, 0.1);
+	}
+	&.small {
+		font-size: 8px;
+	}
+	&.big {
+		font-size: 18px;
+	}
+	&.white {
+		color: #fff;
+	}
+}
+
+
+
+
+
+// Responsive video container
+.video-container {
+	height: 0;
+	padding-bottom: 56.25%;
+	position: relative;
+	margin-bottom: 16px;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+
+
+
+
+// some Classes for colors
+.color-primary{color: $primary !important;}
+a.color-primary:hover{opacity: .8; color: $primary !important;}
+
+.color-secondary{color: $secondary !important;}
+a.color-secondary:hover{opacity: .8; color: $secondary !important;}
+
+.color-dark{color: $color-text !important;}
+a.color-dark:hover{opacity: .8; color: $color-text !important;}
+
+.color-light{color: $white !important;}
+a.color-light:hover{opacity: .8; color: $white !important;}
+
+.black {color: #000 }
+a.black:hover{opacity: .8; color: #000}
+
+.color-error{ color: $color-error;}
+a.color-error:hover{opacity: .8; color: $color-error;}
+
+.color-success{ color: $color-success;}
+a.color-success:hover{opacity: .8; color: $color-success;}
+
+.color-warning{ color: $color-warning;}
+a.color-warning:hover{opacity: .8; color: $color-warning;}
+
+.color-focus{ color: $color-focus;}
+a.color-focus:hover{opacity: .8; color: $color-focus;}
+
+
+.bg-primary{background-color: $primary !important; }
+.bg-secondary{background-color: $secondary !important; }
+.bg-light, .bg-white { background-color: $white !important; }
+.bg-dark { background-color: $black !important; }
+.bg-black { background-color: #000 !important; }
+.bg-transparent { background-color: transparent !important; }
+.bg-error{ background-color: $color-error;}
+.bg-success{ background-color: $color-success;}
+.bg-warning{ background-color: $color-warning;}
+.bg-focus{ background-color: $color-focus;}
+
+
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content
+// See: http://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	white-space: nowrap;
+	clip-path: inset(50%);
+	border: 0;
+}
+// Use in conjunction with .sr-only to only display content when it's focused.
+//
+// Useful for "Skip to main content" links; see https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+//
+// Credit: HTML5 Boilerplate
+.sr-only-focusable {
+	&:active,
+	&:focus {
+		position: static;
+		width: auto;
+		height: auto;
+		overflow: visible;
+		clip: auto;
+		white-space: normal;
+		clip-path: none;
+	}
+}
+
+
+//border radius
+.radius-circle {border-radius: 50% !important;}
+.radius-small {border-radius: 4px !important;}
+
+
+
+// Vertical alignments
+.align-baseline    { vertical-align: baseline !important; } // Browser default
+.align-top         { vertical-align: top !important; }
+.align-middle      { vertical-align: middle !important; }
+.align-bottom      { vertical-align: bottom !important; }
+.align-text-bottom { vertical-align: text-bottom !important; }
+.align-text-top    { vertical-align: text-top !important; }
+
+
+
+
+
+//display
+.display-none, .hidden {display: none;}
+.display-inline {display: inline;}
+.display-inlineBlock {display: inline-block;}
+.display-block, .show, .shown {display: block;}
+.display-table        { display: table !important; }
+.display-tableCell   { display: table-cell !important; }
+.display-flex         { display: flex !important; }
+.display-inlineFlex  { display: inline-flex !important; }
+
+
+
+//floats
+.float-none{float: none !important;}
+.float-left{float: left !important;}
+.float-center{margin-left: auto !important;margin-right: auto !important;}
+.float-right{float: right !important;}
+
+
+
+
+// Spacing
+//
+// Generating margins and paddings with and without breakpoints
+$mr-breakpoints: (
+                  (sm, 768px),
+                  (md, 992px),
+                  (lg, 1200px)
+                  );
+
+
+// Control the default styling of most Inject elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+$spacer: 1rem !default;
+$spacers: (
+           0: 0,
+           1: ($spacer * .25),
+           2: ($spacer * .5),
+           3: $spacer,
+           4: ($spacer * 1.5),
+           5: ($spacer * 3),
+           6: ($spacer * 3.5),
+           7: ($spacer * 5),
+           8: ($spacer * 5.5),
+           9: ($spacer * 6),
+           10: ($spacer * 7.5)
+           ) !default;
+
+// This variable affects the `.h-*` and `.w-*` classes. inside the loops generatin
+$sizes: (
+         25: 25%,
+         50: 50%,
+         75: 75%,
+         100: 100%
+         ) !default;
+@each $prop, $abbrev in (width: width, height: height) {
+	@each $size, $length in $sizes {
+		.#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+	}
+}
+
+
+
+//generatinng margins and paddings outside from breakfpoint for XS and global
+@each $prop, $abbrev in (margin: m, padding: p) {
+	@each $val, $length in $spacers {
+		.#{$abbrev}-#{$val} {
+			#{$prop}: $length !important;
+		}
+		.#{$abbrev}t-#{$val}{
+			#{$prop}-top: $length !important;
+		}
+		.#{$abbrev}r-#{$val}{
+			#{$prop}-right: $length !important;
+		}
+		.#{$abbrev}b-#{$val}{
+			#{$prop}-bottom: $length !important;
+		}
+		.#{$abbrev}l-#{$val}{
+			#{$prop}-left: $length !important;
+		}
+	}
+}
+@each $val in $mr-breakpoints {
+	$col: nth($val, 1);
+	$size: nth($val, 2);
+
+	@media only screen and (min-width: #{$size}) {
+		//displays
+		.display-#{$col}-none         { display: none !important; }
+		.display-#{$col}-inline       { display: inline !important; }
+		.display-#{$col}-inlineBlock { display: inline-block !important; }
+		.display-#{$col}-block        { display: block !important; }
+		.display-#{$col}-table        { display: table !important; }
+		.display-#{$col}-tableCell   { display: table-cell !important; }
+		.display-#{$col}-flex         { display: flex !important; }
+		.display-#{$col}-inline-flex  { display: inline-flex !important; }
+
+		//floats
+		.float-#{$col}-none{float: none !important;}
+		.float-#{$col}-left{float: left !important;}
+		.float-#{$col}-center{margin-left: auto !important;margin-right: auto !important;}
+		.float-#{$col}-right{float: right !important;}
+
+		//alignments
+		.text-#{$col}-left   { text-align: left !important; }
+		.text-#{$col}-right  { text-align: right !important; }
+		.text-#{$col}-center { text-align: center !important; }
+
+		@each $prop, $abbrev in (margin: m, padding: p) {
+			@each $val, $length in $spacers {
+
+				.#{$abbrev}-#{$col}-#{$val} {
+					#{$prop}: $length !important;
+				}
+				.#{$abbrev}t-#{$col}-#{$val}{
+					#{$prop}-top: $length !important;
+				}
+				.#{$abbrev}r-#{$col}-#{$val}{
+					#{$prop}-right: $length !important;
+				}
+				.#{$abbrev}b-#{$col}-#{$val}{
+					#{$prop}-bottom: $length !important;
+				}
+				.#{$abbrev}l-#{$col}-#{$val}{
+					#{$prop}-left: $length !important;
+				}
+			}
+		}
+	}
+}

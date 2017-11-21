@@ -1,0 +1,150 @@
+// Font based variables
+//
+// Styleguide
+
+$base-font:   		'ProximaNova', 'Avenir Next','Helvetica Neue','Segoe UI', 'Verdana', sans-serif !default;
+$monospace-font:  	Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+$system-font: 		-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+
+$heading:   		"ProximaNova", Arial, Sans-Serif !default;
+$body:    		$base-font !default;
+$monospace:      $monospace-font !default;
+
+//body base
+$font-size: 		16px !default;
+$font-size--smaller: 		14px !default;
+$line-height: 		1.618 !default;
+
+//paragraphs-classes and global-classes
+$font-size--huge:   		30px !default;
+$font-size--large:      	28px !default;
+$font-size--medium: 	$font-size !default;
+$font-size--small:		15px !default;
+$font-size-smaller: 		14px !default;
+$font-size--tiny: 		12px !default;
+
+
+
+//button
+$button-font-size: 	1rem;
+
+
+// input - select- textarea
+$inputs-font-size: 		15px;
+$inputs-small-height: 	30px;
+$inputs-height: 			40px;
+$inputs-large-height: 	65px;
+//form label
+$label-font-size: 		.78rem;
+//form info - success/error
+$form-info-font-size: 	12px;
+
+
+
+// modal
+$modal-header-font-size: 	1.08rem;
+$modal-body-font-size: 		$font-size--medium;
+
+
+// notes
+$note-font-size: .78rem;
+
+//tooltip
+$tooltip-font-size: 0.85rem;
+
+//blockquote
+$blockquote-font-size: 14px;
+
+//pre
+$pre-font-size: 16px;
+
+
+
+
+
+
+
+
+
+
+
+// FONTS
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('./assets/fonts/Proxima-Nova/ProximaNovaT-Thin.eot');
+	src: url('./assets/fonts/Proxima-Nova/ProximaNovaT-Thin.woff2') format('woff2'),
+	url('./assets/fonts/Proxima-Nova/ProximaNovaT-Thin.woff') format('woff'),
+	url('./assets/fonts/Proxima-Nova/ProximaNovaT-Thin.ttf') format('truetype'),
+	url('./assets/fonts/Proxima-Nova/ProximaNovaT-Thin.svg#ProximaNovaT-Thin') format('svg'),
+	url('./assets/fonts/Proxima-Nova/ProximaNovaT-Thin.eot?#iefix') format('embedded-opentype');
+	font-weight: 200;
+	font-style: lighter;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Light.eot');
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Light.woff2') format('woff2'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Light.woff') format('woff'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Light.ttf') format('truetype'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Light.svg#ProximaNova-Light') format('svg'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Light.eot?#iefix') format('embedded-opentype');
+	font-weight: 300;
+	font-style: light;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Regular.eot');
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Regular.woff2') format('woff2'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Regular.woff') format('woff'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Regular.ttf') format('truetype'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Regular.eot?#iefix') format('embedded-opentype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'ProximaNova-RegularIt';
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-RegularIt.eot');
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-RegularIt.woff2') format('woff2'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-RegularIt.woff') format('woff'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-RegularIt.ttf') format('truetype'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-RegularIt.svg#ProximaNova-RegularIt') format('svg'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-RegularIt.eot?#iefix') format('embedded-opentype');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Semibold.eot');
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Semibold.woff2') format('woff2'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Semibold.woff') format('woff'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Semibold.ttf') format('truetype'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Semibold.svg#ProximaNova-Semibold') format('svg'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype');
+	font-weight: 500;
+	font-style: bold;
+}
+
+
+@font-face {
+	font-family: 'ProximaNova';
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Bold.eot');
+	src: url('./assets/fonts/Proxima-Nova/ProximaNova-Bold.woff2') format('woff2'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Bold.woff') format('woff'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Bold.ttf') format('truetype'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Bold.svg#ProximaNova-Bold') format('svg'),
+	url('./assets/fonts/Proxima-Nova/ProximaNova-Bold.eot?#iefix') format('embedded-opentype');
+	font-weight: 600;
+	font-style: bolder;
+}
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+#tooltip_container{ 
+	max-width: 200px;
+	padding: 12px 16px;
+	color: #fff;
+	border-radius: 0.25rem;
+	background: rgba(3, 3, 3, 0.90);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	position: absolute;
+	display: none;
+	z-index: 1070;
+	line-height: 1.5;
+	text-align: left;
+	font-size: $tooltip-font-size;
+	word-wrap: break-word;
+	&:after{
+		content: "";
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		background-color: #1b1b1b;
+		z-index: 56474;
+		bottom: -5px;
+		left: 20px;
+		transform: rotate(45deg);
+	}
+}

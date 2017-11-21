@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'ProximaNovaT-Thin';
+  src: url('ProximaNovaT-Thin.eot');
+  src: url('ProximaNovaT-Thin.woff2') format('woff2'),
+       url('ProximaNovaT-Thin.woff') format('woff'),
+       url('ProximaNovaT-Thin.ttf') format('truetype'),
+       url('ProximaNovaT-Thin.svg#ProximaNovaT-Thin') format('svg'),
+       url('ProximaNovaT-Thin.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+

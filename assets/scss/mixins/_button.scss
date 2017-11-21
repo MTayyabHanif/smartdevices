@@ -1,0 +1,20 @@
+// Mixin to create new button.
+
+@mixin button($color-text, $color-back){
+	color: $color-text;
+	background-color: $color-back;
+
+	&:hover, &:focus, &:active {
+		color: $color-text;
+		background-color: darken($color-back, 10%);
+	}
+	&.outline {
+		background: transparent !important;
+		color: $color-back;
+		box-shadow: 0 0 0px 2px $color-back;
+		&:focus, &:hover, &:active {
+			box-shadow: 0 0 0px 2px darken($color-back, 30%);
+			color: darken($color-back, 30%);
+		}
+	}
+}
