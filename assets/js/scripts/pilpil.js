@@ -4,8 +4,29 @@
  * @copyright 2015-2016 Zafree
  * @license MIT
  */
- ;(function() {
- 	'use strict';
+(function ($) {
+	'use strict';
+
+
+	
+	$.fn.hasAttr = function (name) {
+		return this.attr(name) !== undefined;
+	};
+
+	$.fn.inView = function () {
+		// Am I visible?
+		// Height and Width are not explicitly necessary in visibility detection, the bottom, right, top and left are the
+		// essential checks. If an image is 0x0, it is technically not visible, so it should not be marked as such.
+		// That is why either width or height have to be > 0.
+		var rect = this[0].getBoundingClientRect();
+		return (
+			(rect.height > 0 || rect.width > 0) &&
+			rect.bottom >= 0 &&
+			rect.right >= 0 &&
+			rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+			rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	};
 
 	 // set progressive image loading
 	 var progressiveMedias = document.querySelectorAll('.progressiveMedia');
@@ -73,7 +94,8 @@
 		});
 	});
 
-})();
+})(jQuery);
+
 
 // canvas blur function
 CanvasImage = function (e, t) {

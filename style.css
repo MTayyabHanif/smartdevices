@@ -3005,6 +3005,7 @@ p {
 /* Headings
 ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
   --x-height-multiplier: 0.342;
   --baseline-multiplier: 0.22;
   text-rendering: optimizeLegibility;
@@ -4222,16 +4223,6 @@ input[type="date"], focus {
     background-color: #0052CC; }
     .dropdown-content ul.primary li:hover a, .dropdown-content ul.primary li:focus a, .dropdown-content ul.primary li:active a {
       color: #fff; }
-
-/*----------  nav  ----------*/
-nav ul {
-  padding: 0; }
-  nav ul li {
-    display: inline-block;
-    margin-left: 16px; }
-    nav ul li a {
-      text-decoration: none;
-      color: #1e2834; }
 
 /*----------  modal  ----------*/
 .modal-box {
@@ -6883,6 +6874,87 @@ span.select2-selection__rendered {
 /*
 * header
 */
+header.site-header {
+  padding: 45px; }
+  header.site-header .header-wrapper {
+    box-shadow: 0 -3px 12px -6px #333;
+    background-color: #fff;
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    position: fixed; }
+    header.site-header .header-wrapper.sticky-header ul.menu li {
+      padding: 1.2rem 0.2rem; }
+  header.site-header .site-branding {
+    display: table;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 25px; }
+    header.site-header .site-branding a {
+      text-decoration: none; }
+  header.site-header .site-title {
+    display: table-cell;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+    vertical-align: middle;
+    letter-spacing: -1px; }
+  header.site-header .site-description {
+    display: none; }
+  header.site-header .main-navigation {
+    display: block;
+    text-align: center; }
+    header.site-header .main-navigation .menu-toggle {
+      display: none; }
+  header.site-header ul.menu {
+    display: block;
+    padding: 0; }
+    header.site-header ul.menu li {
+      transition: all .25s ease-in-out;
+      display: inline-block;
+      padding: 2rem 0.2rem;
+      margin: 0; }
+      header.site-header ul.menu li a {
+        display: inline;
+        padding: 2rem 0.8rem;
+        font-weight: 500;
+        text-decoration: none;
+        margin: 0; }
+        header.site-header ul.menu li a span {
+          margin-left: 6px;
+          vertical-align: -1px;
+          font-size: 0.8rem;
+          opacity: 0.7; }
+        header.site-header ul.menu li a:hover {
+          color: #0052CC; }
+          header.site-header ul.menu li a:hover span {
+            opacity: 1; }
+      header.site-header ul.menu li .sub-menu {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: auto;
+        margin: 0;
+        width: 310px; }
+      header.site-header ul.menu li:hover .sub-menu {
+        opacity: 1;
+        visibility: visible; }
+  header.site-header .search-bar {
+    display: table;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-right: 25px; }
+    header.site-header .search-bar span {
+      display: table-cell;
+      vertical-align: middle; }
+
 /*
 * layout
 */

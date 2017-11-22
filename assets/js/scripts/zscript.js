@@ -1,36 +1,7 @@
-document.addEventListener("DOMContentLoaded",function(){
 
 
-
-	"use strict";
-
-	hljs.initHighlightingOnLoad();
-	console.clear();
-
-
-	// Notes
-	infoNotes('[data-component="info-note"]');
-
-	// Dropdown
-	dropdown('[data-component="dropdown"]');
-
-	// Sticky Headers
-	// stickyHeader('[data-type="stickyHeader"]');
-	stickyHeader('[data-type="demo_sticky"]');
-
-	// Modal Box
-	modal('[data-component="modal"]');
-
-	// Tooltip
-	tooltip('[data-component="tooltip"]');
-
-	// Tabs
-	tabs('[data-component="tabs"]');
-
-	// Collapseable box
-	togglebox('[data-component="collapse"]');
-
-
+jQuery(document).ready(function ($) {
+	
 	// fade out when clicks on external link - smooth animation :)
 	$('a.external').click(function(e) {
 		e.preventDefault();
@@ -39,34 +10,33 @@ document.addEventListener("DOMContentLoaded",function(){
 			window.location.href = link;
 		});
 	});
-
-
-
-	//Demo animations
-	// $(".sec-toggle").click(function(event) {
-	// 	event.preventDefault();
-	// 	$(this).next(".demo-heading").slideToggle('400');
-	// 	$(this).toggleClass("isOpened");
-	// 	if ( $(this).hasClass("isOpened") ) {
-	// 		$(this).find('span.line').animate({
-	// 			width:'100%',
-	// 		}, 800);
-	// 		$('html, body').animate({
-	// 			scrollTop: $(this).next(".demo-heading").find('h3').first().offset().top - 10
-	// 		}, 800);
-
-	// 		//  THIS IS HERE ONLY FOR DEMO PURPOSE
-	// 		// Sticky Headers
-	// 		stickyHeader('[data-type="demo_sticky"]');
-
-	// 	} else {
-	// 		$(this).find('span.line').animate({
-	// 			width:'2%'
-	// 		}, 800);
-	// 	}
-	// });
-
-
+	
+	
+	/**
+	*
+	* Header SCRIPTING
+	*
+	*/
+	$('ul.menu li.menu-item-has-children>a').append('<span class="ti-angle-down"></span>');
+	
+	//sticky header
+	$(window).on('scroll load', function () {
+		if ($(document).scrollTop() == $('.header-wrapper')[0].getBoundingClientRect().top){
+			$('.header-wrapper').removeClass('sticky-header');
+		}else{
+			$('.header-wrapper').addClass('sticky-header');
+		}
+	});
+	
+	
+	
+	
+	
+	/**
+	*
+	* Fonts Loading using FONTFACEOBSERVER
+	*
+	*/
 	var baseFont = new FontFaceObserver('ProximaNova', {
 		weight: 200
 	});
@@ -86,29 +56,9 @@ document.addEventListener("DOMContentLoaded",function(){
 	Promise.all([baseFont.load(), baseFont2.load(), baseFont3.load(), baseFont4.load(), baseFont5.load()]).then(function () {
 		document.documentElement.className += " fonts-loaded";
 	});
-
-	$(".category-more").click(function(event) {
-		event.preventDefault();
-		$(this).hide();
-		$('.short-category').fadeOut('400', function() {
-			$('.all-categories').fadeIn('400');
-		});
-		$('.category-hide').show();
-	});
-
-	$('.category-hide').click(function(event) {
-		event.preventDefault();
-		$(this).hide();
-		$('.category-more').show();
-		$('.all-categories').fadeOut('400', function() {
-			$('.short-category').fadeIn('400');
-		});
-	});
-
-
+	
+	
 });
-
-
 
 
 
