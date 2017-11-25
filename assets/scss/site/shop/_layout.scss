@@ -1,6 +1,9 @@
 .site-content{
     background-color: #FCFCFC;
     padding-top: $magic-num;
+    @media screen and (max-width: 520px) {
+        padding-top: 12px;
+    }
 }
 .site-main {
     max-width: 1280px;

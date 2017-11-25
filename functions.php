@@ -95,10 +95,11 @@ if ( ! function_exists( 'smartdevices_setup' ) ) :
 		 */
 		add_image_size( 'smartdevices-hd', 2000, 1200, true );
 		add_image_size( 'smartdevices-cover', 1280, 360, true );
-		add_image_size( 'smartdevices-post', 450, 250, true );
+		add_image_size( 'smartdevices-post', 400, 270, true );
 		add_image_size( 'smartdevices-category', 310, 460, true );
 		add_image_size( 'smartdevices-avatar', 100, 100, true );
-		add_image_size( 'smartdevices-tiny', 20, 20, true );
+		//usually used for small image in pilpil
+		add_image_size( 'smartdevices-tiny', 60, 60, false );
 	}
 endif;
 add_action( 'after_setup_theme', 'smartdevices_setup' );

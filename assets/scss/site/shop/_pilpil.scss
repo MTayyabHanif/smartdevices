@@ -54,9 +54,18 @@ figure {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    vertical-align: baseline;
 }
-
+.progressiveMedia-noscript {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 .progressiveMedia-image {
     display: block;
     position: absolute;
@@ -81,8 +90,8 @@ figure {
 .progressiveMedia.is-canvasLoaded .progressiveMedia-canvas {
     visibility: visible;
     opacity: 1;
-    -webkit-transition: visibility 0s linear 0s, opacity .4s 0s;
-    transition: visibility 0s linear 0s, opacity .4s 0s;
+    -webkit-transition: visibility .2s linear 0s, opacity .4s 0s;
+    transition: visibility .2s linear 0s, opacity .4s 0s;
 }
 
 .progressiveMedia .progressiveMedia-image {
@@ -95,6 +104,6 @@ figure {
 .progressiveMedia.is-imageLoaded .progressiveMedia-image {
     visibility: visible;
     opacity: 1;
-    -webkit-transition: visibility 0s linear 0s, opacity 1s 0s;
-    transition: visibility 0s linear 0s, opacity 1s 0s;
+    -webkit-transition: visibility .2s linear 0s, opacity 1s 0s;
+    transition: visibility .2s linear 0s, opacity 1s 0s;
 }

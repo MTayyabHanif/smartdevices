@@ -29,8 +29,6 @@ add_action( 'after_setup_theme', 'smartdevices_woocommerce_setup' );
  * @return void
  */
 function smartdevices_woocommerce_scripts() {
-	wp_enqueue_style( 'smartdevices-woocommerce-style', get_template_directory_uri() . '/woocommerce.css' );
-
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
 			font-family: "star";
@@ -91,16 +89,6 @@ function smartdevices_woocommerce_thumbnail_columns() {
 add_filter( 'woocommerce_product_thumbnails_columns', 'smartdevices_woocommerce_thumbnail_columns' );
 
 /**
- * Default loop columns on product archives.
- *
- * @return integer products per row.
- */
-function smartdevices_woocommerce_loop_columns() {
-	return 3;
-}
-add_filter( 'loop_shop_columns', 'smartdevices_woocommerce_loop_columns' );
-
-/**
  * Related Products Args.
  *
  * @param array $args related products args.
@@ -108,8 +96,8 @@ add_filter( 'loop_shop_columns', 'smartdevices_woocommerce_loop_columns' );
  */
 function smartdevices_woocommerce_related_products_args( $args ) {
 	$defaults = array(
-		'posts_per_page' => 3,
-		'columns'        => 3,
+		'posts_per_page' => 4,
+		'columns'        => 4,
 	);
 
 	$args = wp_parse_args( $defaults, $args );
@@ -118,36 +106,6 @@ function smartdevices_woocommerce_related_products_args( $args ) {
 }
 add_filter( 'woocommerce_output_related_products_args', 'smartdevices_woocommerce_related_products_args' );
 
-if ( ! function_exists( 'smartdevices_woocommerce_product_columns_wrapper' ) ) {
-	/**
-	 * Product columns wrapper.
-	 *
-	 * @return  void
-	 */
-	function smartdevices_woocommerce_product_columns_wrapper() {
-		$columns = smartdevices_woocommerce_loop_columns();
-		echo '<div class="columns-' . absint( $columns ) . '">';
-	}
-}
-add_action( 'woocommerce_before_shop_loop', 'smartdevices_woocommerce_product_columns_wrapper', 40 );
-
-if ( ! function_exists( 'smartdevices_woocommerce_product_columns_wrapper_close' ) ) {
-	/**
-	 * Product columns wrapper close.
-	 *
-	 * @return  void
-	 */
-	function smartdevices_woocommerce_product_columns_wrapper_close() {
-		echo '</div>';
-	}
-}
-add_action( 'woocommerce_after_shop_loop', 'smartdevices_woocommerce_product_columns_wrapper_close', 40 );
-
-/**
- * Remove default WooCommerce wrapper.
- */
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 
 if ( ! function_exists( 'smartdevices_woocommerce_wrapper_before' ) ) {
 	/**
@@ -350,3 +308,159 @@ function woocommerce_smartdevices_shop_cover_image() {
 	}
 }
 add_action('woocommerce_before_main_content', 'woocommerce_smartdevices_shop_cover_image', 16);
+
+
+
+
+
+/*************************************************
+ *************************************************
+ *  		PRODUCT LISTING FUNCTIONS            *
+ *************************************************
+ *************************************************
+ */
+
+
+
+
+if ( ! function_exists( 'smartdevices_woocommerce_product_columns_wrapper' ) ) {
+	/**
+	 * Product columns wrapper.
+	 *
+	 * @return  void
+	 */
+	function smartdevices_woocommerce_product_columns_wrapper() {
+		echo '<div class="products-list-wrapper container">'; 
+	}
+}
+add_action( 'woocommerce_before_shop_loop', 'smartdevices_woocommerce_product_columns_wrapper', 40 );
+
+
+
+
+
+
+if ( ! function_exists( 'smartdevices_woocommerce_product_columns_wrapper_close' ) ) {
+	/**
+	 * Product columns wrapper close.
+	 *
+	 * @return  void
+	 */
+	function smartdevices_woocommerce_product_columns_wrapper_close() {
+		echo '</div>';
+	}
+}
+add_action( 'woocommerce_after_shop_loop', 'smartdevices_woocommerce_product_columns_wrapper_close', 40 );
+
+
+/**
+ * Remove default WooCommerce wrapper.
+ */
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
+
+
+
+
+
+
+
+if ( ! function_exists( 'woocommerce_template_loop_product_link_wrapper_open' ) ) {
+	/**
+	 * Product in loop link wrapper open.
+	 *
+	 * @return  void
+	 */
+	function woocommerce_template_loop_product_link_wrapper_open() {
+		echo '<div class="product-loop-link-wrapper">'; 
+	}
+}
+add_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_wrapper_open', 5 );
+
+if ( ! function_exists( 'woocommerce_template_loop_product_link_wrapper_close' ) ) {
+	/**
+	 * Product in loop link wrapper close.
+	 *
+	 * @return  void
+	 */
+	function woocommerce_template_loop_product_link_wrapper_close() {
+		echo '</div>';
+	}
+}
+add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_wrapper_close', 20 );
+
+
+
+
+/**
+ * Changing position of default product link wrapper.
+ */
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
+add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 15 );
+
+
+
+
+/**
+ * Displaying product image
+ *
+ * It also have pilpil as lazy loading
+ *
+ * @return void
+ */
+function woocommerce_template_loop_product_thumbnail($product){
+
+	$big_post_image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'smartdevices-post');
+	$big_post_image = $big_post_image[0];
+	
+	$small_post_image = wp_get_attachment_image_src(get_post_thumbnail_id($product->ID), 'smartdevices-tiny');
+	$small_post_image = $small_post_image[0];
+	
+	
+	if ( has_post_thumbnail( $product->ID ) ) { 	?>
+	<div class="aspectRatioPlaceholder">
+		<div class="aspectRatioPlaceholder-fill"></div>
+		<div class="progressiveMedia" data-width="400" data-height="270">
+			<img class="progressiveMedia-thumbnail" id="progressiveMedia-thumbnail" src="<?php echo esc_url($small_post_image); ?>" title="<?php the_title(); ?>" />
+			<canvas class="progressiveMedia-canvas" id="progressiveMedia-canvas"></canvas>
+			<img class="progressiveMedia-image" src="" data-src="<?php echo esc_url($big_post_image); ?>" title="<?php the_title(); ?>"/>
+			<noscript class="js-progressiveMedia-inner">&amp;lt;img class="progressiveMedia-noscript js-progressiveMedia-inner" src="<?php echo esc_url($big_post_image); ?>"&amp;gt;</noscript>
+		</div>
+	</div>
+	<?php 
+	}
+}
+
+
+
+
+
+
+
+/**
+ * custom_woocommerce_loop_product_add_to_cart_text
+*/
+function custom_woocommerce_loop_product_add_to_cart_text() {
+	global $product;
+	
+	$product_type = $product->product_type;
+	
+	switch ( $product_type ) {
+		case 'external':
+			return __( 'Buy product', 'woocommerce' );
+		break;
+		case 'grouped':
+			return __( 'View products', 'woocommerce' );
+		break;
+		case 'simple':
+			return __( 'Show details', 'woocommerce' );
+		break;
+		case 'variable':
+			return __( 'Select options', 'woocommerce' );
+		break;
+		default:
+			return __( 'Read more', 'woocommerce' );
+	}
+	
+}
+add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_loop_product_add_to_cart_text' );

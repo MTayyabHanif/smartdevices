@@ -46,7 +46,6 @@ jQuery(document).ready(function ($) {
 	
 	
 	
-	
 	/**
 	*
 	* Fonts Loading using FONTFACEOBSERVER

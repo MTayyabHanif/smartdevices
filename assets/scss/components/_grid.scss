@@ -80,11 +80,10 @@ Default valid namespaces are xs, sm, md, lg. The xs namespace is default and use
  *
  */
  $fg-breakpoints: (
-                   (xs, 520px),
-                   (sm, 768px),
-                   (md, 992px),
-                   (lg, 1200px),
-                   (xl, 1650px)
+					(lg, 1200px),
+					(md, 992px),
+					(sm, 768px),
+					(xs, 520px)
                    ) !default;
 
 /**
@@ -263,20 +262,22 @@ Default valid namespaces are xs, sm, md, lg. The xs namespace is default and use
  	@include grid-base( $namespace );
 
  }
-
  @each $val in $fg-breakpoints {
- 	@if length($val) == 1 {
-
- 		$namespace: nth($val, 1);
+	 @if length($val) == 1 {
+		 
+		 $namespace: nth($val, 1);
  		@include grid-sizes( $namespace );
-
- 	} @else {
-
- 		$namespace: nth($val, 1);
- 		$size: nth($val, 2);
-
- 		@media only screen and (max-width: #{$size}) {
- 			@include grid-sizes( $namespace );
- 		}
- 	}
- }
+		 
+	} @else {
+		
+		$namespace: nth($val, 1);
+		$size: nth($val, 2);
+		
+		@media only screen and (max-width: #{$size}) {
+			@include grid-sizes( $namespace );
+		}
+	}
+}
+@media only screen and (min-width: 1200px) {
+	@include grid-sizes( 'xl' );
+}
