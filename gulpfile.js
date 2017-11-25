@@ -26,32 +26,41 @@
 
 
 
-// 
-// ALL Variables
-// 
+/* 
+ * ALL Variables
+*/ 
+// Utilities
 var gulp 		= require('gulp'),
 gutil		 	= require('gulp-util'),
 rename   		= require('gulp-rename'),
+// notify 			= require('gulp-notify'),
 
+// SCSS / CSS
 scss 			= require('gulp-ruby-sass'),
-sourcemaps 	= require('gulp-sourcemaps'),
+sourcemaps 		= require('gulp-sourcemaps'),
 postcss 		= require('gulp-postcss'),
 autoprefixer 	= require('autoprefixer'),
 rtlcss 			= require('rtlcss'),
-cleanCSS       	= require('gulp-clean-css'),
+minifycss       = require('gulp-uglifycss'),
+cmq       		= require('gulp-group-css-media-queries'),
 
+// JAVASCRIPT
 jshint 		= require('gulp-jshint'),
-uglify         		= require('gulp-uglify'),
-concat 		= require('gulp-concat'),
+uglify         	= require('gulp-uglify'),
+concat 			= require('gulp-concat'),
 
-cache          		= require('gulp-cache'),
+// IMAGES
+cache          	= require('gulp-cache'),
 imagemin       	= require('gulp-imagemin'),
 
-livereload    	= require('gulp-livereload'),
+// syncing
+browserSync 	= require('browser-sync'), // Asynchronous browser loading on .scss file changes
+reload 			= browserSync.reload,
+// livereload    	= require('gulp-livereload'),
 
+// Directories
 rootDir 		= './',
-source 		= './assets/',
-
+source 			= './assets/',
 destination 	= 'assets/distribution/';
 
 
@@ -60,16 +69,20 @@ destination 	= 'assets/distribution/';
 //	JS files are linting by an linter and combining into one file
 gulp.task('js', function() {
 	gulp.src([
-	         '!assets/js/scripts/jquery.js', // ignoring Jquery - call it in WP by using function or make <script> tag of it
+	         '!assets/js/scripts/jquery.js', // ignoring Jquery - because it is automaticall in WP, stil if you can't see, call it in WP by using function or make <script> tag of it
 	         source + 'js/scripts/*.js'
 	         ])
 	// .pipe(jshint('./.jshintrc'))
 	// .pipe(jshint.reporter('jshint-stylish'))
 	.pipe(concat('scripts.min.js'))
+	.pipe(uglify())
 	.pipe(gulp.dest(source + 'js/'))
-	.pipe(livereload());
+	// .pipe(livereload());
+	reload()
+	gutil.log(gutil.colors.green('Javascript files task complete'));
 	cache.clearAll();
 });
+
 
 
 
@@ -87,9 +100,40 @@ gulp.task('scss-to-css',function () {
 	})
 	.pipe(sourcemaps.write())
 	.pipe(gulp.dest(rootDir))
-	.pipe(livereload());
+	.pipe(reload({ stream: true })) // Inject Styles when style file is created
 	cache.clearAll();
 });
+// minifting and stuff
+gulp.task('pre-min-css', ['scss-to-css'],function () {
+	gulp.src(rootDir + 'style.css')
+	.pipe(postcss([
+		autoprefixer(
+			{
+				browsers: [
+					'> 1%',
+					'last 2 versions',
+					'firefox >= 4',
+					'safari 7',
+					'safari 8',
+					'IE 8',
+					'IE 9',
+					'IE 10',
+					'IE 11'
+				],
+				cascade: false
+			}
+		),
+	]))
+	.pipe(cmq()) // Combines Media Queries
+	.pipe(minifycss({
+		maxLineLen: 80
+	}))
+	.pipe(rename({ extname: '.min.css' }))
+	.pipe(gulp.dest(rootDir))
+	// .pipe(livereload())
+	gutil.log(gutil.colors.green('Styles minification task complete'));
+});
+
 
 
 
@@ -175,7 +219,22 @@ gulp.task('build', function() {
 	console.log('[ CSS ] 	Minifying CSS...');
 	gulp.src(source + 'css/style.css')
 	.pipe(postcss([
-	              autoprefixer(),
+	              autoprefixer(
+					{
+						browsers: [
+							'> 1%',
+							'last 2 versions',
+							'firefox >= 4',
+							'safari 7',
+							'safari 8',
+							'IE 8',
+							'IE 9',
+							'IE 10',
+							'IE 11'
+						],
+						cascade: false
+					}
+				  ),
 	              ]))
 	.on('error', function (err) {
 		console.error('Error!', err.message);
@@ -207,16 +266,54 @@ gulp.task('build', function() {
 
 // Files that are being watched for Live-Reload
 gulp.task('watch', function() {
-	livereload.listen(35729);
-	gulp.watch('**/*.php').on('change', function(file) {
-		livereload.changed(file.path);
-	});
+	// livereload.listen(35729);
+	// gulp.watch('**/*.php').on('change', function(file) {
+	// 	livereload.changed(file.path);
+	// });
 	gulp.watch(source + 'js/scripts/*', ['js']);
-	gulp.watch(source + 'scss/**/*', ['scss-to-css']);
+	gulp.watch(source + 'scss/**/*', ['scss-to-css', 'pre-min-css']);
 	gulp.watch(source + 'css/*');
 });
 
 
+/**
+ * Browser Sync
+ *
+ * Asynchronous browser syncing of assets across multiple devices!! Watches for changes to js, image and php files
+ * Although, I think this is redundant, since we have a watch task that does this already.
+*/
+gulp.task('browser-sync', function () {
+	var files = [
+		'**/*.php',
+		'**/*.{png,jpg,gif}'
+	];
+	browserSync.init(files, {
+
+		// Read here http://www.browsersync.io/docs/options/
+		proxy: 'localhost/personal',
+
+		// port: 8080,
+
+		// Tunnel the Browsersync server through a random Public URL
+		// tunnel: true,
+
+		// Attempt to use the URL "http://my-private-site.localtunnel.me"
+		// tunnel: "ppress",
+
+		// Inject CSS changes
+		injectChanges: true
+
+	});
+});
+
+
+
+
+
+
+
+
+
 
 // tasks to perform for first time when you type CMD (gulp)
-gulp.task('default', ['scss-to-css', 'js', 'watch']);
+gulp.task('default', ['scss-to-css', 'pre-min-css', 'js', 'browser-sync', 'watch']);

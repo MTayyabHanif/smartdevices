@@ -27,6 +27,21 @@ jQuery(document).ready(function ($) {
 			$('.header-wrapper').addClass('sticky-header');
 		}
 	});
+
+	//mobile menu
+	$('a.toggle-menu').click(function(e) {
+		e.preventDefault();
+		$(this).find('span').toggleClass('ti-menu ti-close');
+		$('.mobile-navigation').toggleClass('active');
+		$('.mobile-menu-backdrop').toggle();
+	});
+	
+	//mobile menu
+	$('.mobile-menu-backdrop').click(function(e) {
+		$('a.toggle-menu').find('span').toggleClass('ti-menu ti-close');
+		$('.mobile-navigation').toggleClass('active');
+		$('.mobile-menu-backdrop').toggle();
+	});
 	
 	
 	
@@ -59,9 +74,6 @@ jQuery(document).ready(function ($) {
 	
 	
 });
-
-
-
 
 
 

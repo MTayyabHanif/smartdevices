@@ -26,7 +26,7 @@ html.fonts-loaded, body.fonts-loaded, .fonts-loaded body, .fonts-loaded * {
 
 $magic-num: 28px;
 h1,.alpha, h2,.beta, h3,.gamma, h4,.delta, h5,.epsilon, h6,.zeta, .heading, .heading-sub,
-p, pre, article, blockquote{
+p, pre, article, blockquote, .magic-b{
 	margin-bottom: $magic-num
 }
 

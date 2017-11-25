@@ -23,28 +23,31 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'smartdevices' ); ?></a>
-
+	<div class="mobile-menu-backdrop"></div>
+	<nav id="secondary-navigation" class="mobile-navigation">
+		<?php
+			wp_nav_menu( array(
+				'theme_location' => 'menu-2',
+				'menu_id'        => 'mobile-menu',
+				) );
+				?>
+	</nav><!-- #mobile-navigation -->
 	<header id="masthead" class="site-header">
 		<div class="header-wrapper">
+			<a class="toggle-menu display-xs-inlineBlock" aria-controls="mobile-menu" aria-expanded="false"><span class="ti-menu"></span></a>
 			<div class="site-branding">
 				<?php
-				the_custom_logo();
-				if ( is_front_page() && is_home() ) : ?>
+				the_custom_logo(); ?>
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php else : ?>
-					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-				endif;
-
+					<?php
 				$description = get_bloginfo( 'description', 'display' );
 				if ( $description || is_customize_preview() ) : ?>
 					<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-				<?php
+					<?php
 				endif; ?>
 			</div><!-- .site-branding -->
-
-			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'smartdevices' ); ?></button>
+			
+			<nav id="site-navigation" class="main-navigation display-xs-none">
 				<?php
 					wp_nav_menu( array(
 						'theme_location' => 'menu-1',

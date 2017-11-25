@@ -1,0 +1,59 @@
+//cover header
+.woocommerce-products-header {
+    position: relative;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    @media screen and (max-width: 40em){
+        border-radius: 0px;
+    }  
+    .progressiveMedia,
+    .progressiveMedia-canvas,
+    .progressiveMedia-image {
+        border-radius: 8px;
+        @media screen and (max-width: 40em){
+            border-radius: 0px;
+        }            
+    }
+    .aspectRatioPlaceholder {
+        min-width: 600px;
+        opacity: 0.7;
+    }
+    .woocommerce-products-header__title,
+    .page-description,
+    .woocommerce-breadcrumb {
+        position: absolute;
+        width: 100%;
+        z-index: 120;
+        color: #fff;
+        text-align: center;
+    }
+    .woocommerce-breadcrumb {
+        top: 16%;
+        color: #c0c0c0;
+        a {
+            color: #fff;
+        }
+    }
+    .woocommerce-products-header__title {
+        margin: 0;
+        display: none;
+    }
+    .page-description {
+        top: 43%;
+        h1{font-weight: 500; margin-bottom: 1rem;}
+        p{
+            color: #c0c0c0;
+        }
+    }
+}
+
+
+//sorting tabs
+.woocommerce-tab-ordering{
+    box-shadow: 0 2px 3px rgba(34, 35, 36, 0.15);
+    padding: 8px 5px 0px;
+    a{
+        display: inline-block;
+    }
+}

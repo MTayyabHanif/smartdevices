@@ -79,14 +79,14 @@
 			var $self = $(this),
 			$selfOffset = $self.offset(),
 			$notLoadedYet = $self.attr("src");
-			
-			if ($notLoadedYet == undefined) {
+			if ($notLoadedYet == undefined || $notLoadedYet == "") {
 				var img = new Image();
 				img.src = $self.attr("data-src");
 
 				img.onload = function () {
 					if($self.inView()) {
 						$self.attr('src',$self.attr('data-src'));
+						// load image visible
 						$self.parent().addClass('is-imageLoaded');
 					}
 				}

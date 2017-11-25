@@ -71,7 +71,7 @@ Default valid namespaces are xs, sm, md, lg. The xs namespace is default and use
  *
  * $fg-breakpoints is a Sass list with nested lists inside. Each sub list defines two things.
  * 1. The namespace for that breakpoint. (Required) (i.e. xs, sm, md, lg)
- * 2. The min-width measurement for the breakpoint for that namespace. (i.e. 48em, 62em, 75em)
+ * 2. The max-width measurement for the breakpoint for that namespace. (i.e. 48em, 62em, 75em)
  *
  * Note: These should be in the proper order (at least till libsass handles map keys properly).
  *
@@ -80,7 +80,7 @@ Default valid namespaces are xs, sm, md, lg. The xs namespace is default and use
  *
  */
  $fg-breakpoints: (
-                   (xs),
+                   (xs, 520px),
                    (sm, 768px),
                    (md, 992px),
                    (lg, 1200px),
@@ -275,7 +275,7 @@ Default valid namespaces are xs, sm, md, lg. The xs namespace is default and use
  		$namespace: nth($val, 1);
  		$size: nth($val, 2);
 
- 		@media only screen and (min-width: #{$size}) {
+ 		@media only screen and (max-width: #{$size}) {
  			@include grid-sizes( $namespace );
  		}
  	}

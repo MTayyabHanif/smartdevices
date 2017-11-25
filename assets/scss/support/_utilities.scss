@@ -417,10 +417,11 @@ a.color-focus:hover{opacity: .8; color: $color-focus;}
 //
 // Generating margins and paddings with and without breakpoints
 $mr-breakpoints: (
-                  (sm, 768px),
-                  (md, 992px),
-                  (lg, 1200px)
-                  );
+					(xs, 520px),
+					(sm, 768px),
+					(md, 992px),
+					(lg, 1200px)
+            	);
 
 
 // Control the default styling of most Inject elements by modifying these
@@ -454,7 +455,7 @@ $sizes: (
 	}
 }
 
-
+ 
 
 //generatinng margins and paddings outside from breakfpoint for XS and global
 @each $prop, $abbrev in (margin: m, padding: p) {
@@ -480,7 +481,7 @@ $sizes: (
 	$col: nth($val, 1);
 	$size: nth($val, 2);
 
-	@media only screen and (min-width: #{$size}) {
+	@media only screen and (max-width: #{$size}) {
 		//displays
 		.display-#{$col}-none         { display: none !important; }
 		.display-#{$col}-inline       { display: inline !important; }

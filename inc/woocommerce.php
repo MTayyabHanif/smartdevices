@@ -17,9 +17,9 @@
  */
 function smartdevices_woocommerce_setup() {
 	add_theme_support( 'woocommerce' );
-	add_theme_support( 'wc-product-gallery-zoom' );
-	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
+	// add_theme_support( 'wc-product-gallery-zoom' );
+	// add_theme_support( 'wc-product-gallery-lightbox' );
+	// add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'smartdevices_woocommerce_setup' );
 
@@ -262,3 +262,91 @@ if ( ! function_exists( 'smartdevices_woocommerce_header_cart' ) ) {
 		<?php
 	}
 }
+
+
+
+
+
+
+
+
+// Change the breadcrumb delimeter from '/' to '>'
+add_filter( 'woocommerce_breadcrumb_defaults', 'jk_change_breadcrumb_delimiter' );
+function jk_change_breadcrumb_delimiter( $defaults ) {
+	$defaults['delimiter'] = ' &nbsp;&rsaquo;&nbsp; ';
+	return $defaults;
+}
+
+
+
+if ( ! function_exists( 'woocommerce_smartdevices_headerWrapper_before' ) ) {
+	/**
+	 * Product listing Header.
+	 *
+	 * Opening the header cover wrapper tags.
+	 *
+	 * @return void
+	 */
+	function woocommerce_smartdevices_headerWrapper_before() {
+		?>
+			<header class="woocommerce-products-header magic-b">
+		<?php
+	}
+}
+add_action( 'woocommerce_before_main_content', 'woocommerce_smartdevices_headerWrapper_before', 15 );
+
+
+
+if ( ! function_exists( 'woocommerce_smartdevices_headerWrapper_after' ) ) {
+	/**
+	 * Product listing Header.
+	 *
+	 * Closing the header cover wrapper tags.
+	 *
+	 * @return void
+	 */
+	function woocommerce_smartdevices_headerWrapper_after() {
+		?>
+			</header> <!-- Woocommerce shop header cover  -->
+		<?php
+	}
+}
+add_action( 'woocommerce_archive_description', 'woocommerce_smartdevices_headerWrapper_after', 20 );
+
+
+
+
+
+
+
+if ( ! function_exists( 'woocommerce_smartdevices_shop_cover_image' ) ) {
+	/**
+	 * Displaying WooCommerce  shop page's featured image
+	 *
+	 * It also have pilpil as lazy loading
+	 *
+	 * @return void
+	 */
+function woocommerce_smartdevices_shop_cover_image() {
+		$big_post_image = wp_get_attachment_image_src(get_post_thumbnail_id(get_option( 'woocommerce_shop_page_id' )), 'smartdevices-cover');
+		$big_post_image = $big_post_image[0];
+		
+		$small_post_image = wp_get_attachment_image_src(get_post_thumbnail_id(get_option( 'woocommerce_shop_page_id' )), 'smartdevices-tiny');
+		$small_post_image = $small_post_image[0];
+		
+		
+		if ( has_post_thumbnail( $post->ID ) ) { 	?>
+		<div class="aspectRatioPlaceholder">
+			<div class="aspectRatioPlaceholder-fill"></div>
+			<div class="progressiveMedia" data-width="1280" data-height="360">
+				<img class="progressiveMedia-thumbnail" src="<?php echo esc_url($small_post_image); ?>" title="Shop cover image" />
+				<canvas class="progressiveMedia-canvas"></canvas>
+				<img class="progressiveMedia-image" src="" data-src="<?php echo esc_url($big_post_image); ?>" title="Shop cover image"/>
+			</div>
+		</div>
+		
+		<?php 
+		}
+	}
+}
+add_action('woocommerce_before_main_content', 'woocommerce_smartdevices_shop_cover_image', 16);
