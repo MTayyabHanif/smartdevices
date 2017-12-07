@@ -1,0 +1,213 @@
+/** GLOBAL
+===================================*/
+.slider-wrapper{
+    margin: 1rem auto;
+    overflow: hidden;
+}
+
+/** VARIABLES
+===================================*/
+/** RESET AND LAYOUT
+===================================*/
+.bx-wrapper {
+    position: relative;
+    margin-bottom: 60px;
+    padding: 0;
+    background: #fff;
+    *zoom: 1;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    .slider-content{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        color: #fff;
+        left: 0;
+    }
+    .slide{
+        min-width: 600px;
+        >img{
+            border-radius: 8px;
+            object-fit: cover;
+            @media screen and (max-width: 40em){
+                border-radius: 0px;
+            }
+        }
+        @media screen and (max-width: 440px) { 
+            min-width: 550px;
+        }
+        @media screen and (max-width: 360px) { 
+            min-width: 450px;
+        }
+    }
+    @media screen and (max-width: 440px) { 
+        margin-bottom: 30px;
+    }
+    @media screen and (max-width: 360px) { 
+        margin-bottom: 10px;
+    }
+}
+.bx-wrapper img {
+    max-width: 100%;
+    display: block;
+}
+.bxslider {
+    margin: 0;
+    padding: 0;
+}
+ul.bxslider {
+    list-style: none;
+}
+.bx-viewport {
+    /*fix other elements on the page moving (on Chrome)*/
+    transform: translatez(0);
+    -webkit-transform: translatez(0);
+}
+/** THEME
+===================================*/
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+}
+/* LOADER */
+.bx-wrapper .bx-loading {
+    min-height: 50px;
+    // background: url('images/bx_loader.gif') center center no-repeat #ffffff;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+.bx-wrapper .bx-controls-auto {
+    text-align: center;
+}
+.bx-wrapper .bx-controls-auto .bx-start {
+    display: block;
+    text-indent: -9999px;
+    width: 10px;
+    height: 11px;
+    outline: 0;
+    // background: url('images/controls.png') -86px -11px no-repeat;
+    margin: 0 3px;
+}
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active,
+.bx-wrapper .bx-controls-auto .bx-start:focus {
+    background-position: -86px 0;
+}
+.bx-wrapper .bx-controls-auto .bx-stop {
+    display: block;
+    text-indent: -9999px;
+    width: 9px;
+    height: 11px;
+    outline: 0;
+    // background: url('images/controls.png') -86px -44px no-repeat;
+    margin: 0 3px;
+}
+.bx-wrapper .bx-controls-auto .bx-stop:hover,
+.bx-wrapper .bx-controls-auto .bx-stop.active,
+.bx-wrapper .bx-controls-auto .bx-stop:focus {
+    background-position: -86px -33px;
+}
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+    text-align: left;
+    width: 80%;
+}
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+    right: 0;
+    width: 35px;
+}
+/* IMAGE CAPTIONS */
+.bx-wrapper .bx-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #666;
+    background: rgba(80, 80, 80, 0.75);
+    width: 100%;
+}
+.bx-wrapper .bx-caption span {
+    color: #fff;
+    font-family: Arial;
+    display: block;
+    font-size: .85em;
+    padding: 10px;
+}
+
+
+
+
+
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+.bx-wrapper {
+    .bx-prev {
+        left: 30px;
+    }
+    .bx-next {
+        right: 10px;
+    }
+    .bx-controls-direction a.disabled {
+        display: none;
+    }
+    .bx-prev,
+    .bx-next{
+        font-family: 'themify' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        top: 50%;
+        @media screen and (max-width: 440px) { 
+            top: 53%;
+        }            
+        margin-top: -16px;
+        outline: 0;
+        width: 32px;
+        height: 32px;
+        z-index: 9999;
+        font-size: 16px;
+        color: #f3f3f3;
+        text-decoration: none;
+        &:after{
+            border-radius: 50%;
+            border: 2px solid #f3f3f3;
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: -15px;
+            top: -14px;
+            @media screen and (max-width: 440px) { 
+                width: 30px;
+                height: 30px;
+                left: -10px;
+                top: -9px;
+            }
+        }
+    }
+    .bx-prev{
+        &:before{
+            content: "\e64a"
+        }
+    }
+    .bx-next{
+        &:before{
+            content: "\e649"
+        }
+    }
+}

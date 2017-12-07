@@ -26,43 +26,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div id="comment-<?php comment_ID(); ?>" class="comment_container">
 
-		<?php
-		/**
-		 * The woocommerce_review_before hook
-		 *
-		 * @hooked woocommerce_review_display_gravatar - 10
-		 */
-		do_action( 'woocommerce_review_before', $comment );
-		?>
 
 		<div class="comment-text">
+			<div class="avatar-rating-wrapper">
+				<div class="comment-avatar">
+					<?php
+					/**
+					 * The woocommerce_review_before hook
+					 *
+					 * @hooked woocommerce_review_display_gravatar - 10
+					 */
+					do_action( 'woocommerce_review_before', $comment );
+					?>
+				</div>
+				<?php
+				/**
+				 * The woocommerce_review_before_comment_meta hook.
+				 *
+				 * @hooked woocommerce_review_display_rating - 10
+				 */
+				do_action( 'woocommerce_review_before_comment_meta', $comment );
+				?>
+			</div>
+			<div class="description-authormeta-wrapper">
 
-			<?php
-			/**
-			 * The woocommerce_review_before_comment_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_rating - 10
-			 */
-			do_action( 'woocommerce_review_before_comment_meta', $comment );
+				<?php
+			
+				do_action( 'woocommerce_review_before_comment_text', $comment );
 
-			/**
-			 * The woocommerce_review_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_meta - 10
-			 * @hooked WC_Structured_Data::generate_review_data() - 20
-			 */
-			do_action( 'woocommerce_review_meta', $comment );
+				/**
+				 * The woocommerce_review_comment_text hook
+				 *
+				 * @hooked woocommerce_review_display_comment_text - 10
+				 */
+				do_action( 'woocommerce_review_comment_text', $comment );
 
-			do_action( 'woocommerce_review_before_comment_text', $comment );
+				/**
+				 * The woocommerce_review_meta hook.
+				 *
+				 * @hooked woocommerce_review_display_meta - 10
+				 * @hooked WC_Structured_Data::generate_review_data() - 20
+				 */
+				do_action( 'woocommerce_review_meta', $comment );
 
-			/**
-			 * The woocommerce_review_comment_text hook
-			 *
-			 * @hooked woocommerce_review_display_comment_text - 10
-			 */
-			do_action( 'woocommerce_review_comment_text', $comment );
+				
+				do_action( 'woocommerce_review_after_comment_text', $comment ); ?>
 
-			do_action( 'woocommerce_review_after_comment_text', $comment ); ?>
-
+			</div>
 		</div>
 	</div>

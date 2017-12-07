@@ -77,7 +77,7 @@ $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
 	<a class="display-xs-none button tab-name <?php echo $lowPriceSelected; ?>" href="<?php echo $shop_page_url; ?>?orderby=price"><?php echo __('Low Price'); ?></a>
 	<a class="display-xs-none button tab-name <?php echo $highPriceSelected; ?>" href="<?php echo $shop_page_url; ?>?orderby=price-desc"><?php echo __('High Price'); ?></a>
 
-	<form class="woocommerce-ordering display-none display-xs-inlineBlock" method="get">
+	<form class="woocommerce-order display-none display-xs-inlineBlock" method="get">
 		<select name="orderby" class="orderby">
 			<?php $selected_response = array(); ?>
 			<?php foreach ( $catalog_orderby_options as $id => $name ) : ?>

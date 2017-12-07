@@ -12,6 +12,9 @@
 	margin: 15px 0 15px 0;
 	padding: 45px 30px 0;
 	border-top: 1px solid #dfdfdf;
+	label{
+		font-size: 0.88rem;
+	}
 }
 
 #author, #email, #url {
@@ -31,7 +34,7 @@
 	height: 150px;
 	color: #333;
 	font-size: 15px;
-
+	
 	padding: 10px 10px;
 	margin: 5px 0 5px 0;
 	border: 1px solid #dfdfdf;
@@ -169,7 +172,7 @@ a.leavereplybutton:hover {
 }
 
 .comment-list li .fn, .comment-list li .cfn, .comment-list li .fn a, .comment-list li .cfn a {
-
+	
 	text-transform: uppercase;
 	font-size: 17px;
 	display: inline-block;
@@ -247,9 +250,7 @@ a.leavereplybutton:hover {
 .reply a:hover, #cancel-comment-reply-link a:hover {
 	color: $primary;
 }
-#comments h3 {
 
-}
 #reply-title {
 	display: block;
 	text-align: center;

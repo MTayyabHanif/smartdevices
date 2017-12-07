@@ -7,11 +7,41 @@
  * @package SmartDevices
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar( 'sidebar-1' ) && ! is_active_sidebar( 'sidebar-2' ) ) {
 	return;
 }
 ?>
 
-<aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+
+
+
+<?php
+if ( is_active_sidebar( 'sidebar-1' ) && !is_woocommerce()) {
+?>
+
+<aside id="secondary" class="widget-area col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-12 last-xs">
+	<div class="sidebar-wrapper">
+		<?php dynamic_sidebar( 'sidebar-1' ); ?>
+	</div>
 </aside><!-- #secondary -->
+
+<?php
+}
+?>
+
+
+
+
+<?php
+if ( is_active_sidebar( 'sidebar-2' ) && is_woocommerce() && !is_product() ) {
+?>
+
+<aside id="secondary" class="woo-sidebar widget-area col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-12 last-xs">
+	<div class="sidebar-wrapper">
+		<?php dynamic_sidebar( 'sidebar-2' ); ?>
+	</div>
+</aside><!-- #secodary .woo sidebar -->
+
+<?php
+}
+?>

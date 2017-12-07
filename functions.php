@@ -94,9 +94,9 @@ if ( ! function_exists( 'smartdevices_setup' ) ) :
 		 *
 		 */
 		add_image_size( 'smartdevices-hd', 2000, 1200, true );
-		add_image_size( 'smartdevices-cover', 1280, 360, true );
+		add_image_size( 'smartdevices-cover', 1480, 460, true );
 		add_image_size( 'smartdevices-post', 400, 270, true );
-		add_image_size( 'smartdevices-category', 310, 460, true );
+		add_image_size( 'smartdevices-category', 340, 160, true );
 		add_image_size( 'smartdevices-avatar', 100, 100, true );
 		//usually used for small image in pilpil
 		add_image_size( 'smartdevices-tiny', 60, 60, false );
@@ -127,6 +127,16 @@ function smartdevices_widgets_init() {
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'smartdevices' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'WooCommerce Sidebar', 'smartdevices' ),
+		'id'            => 'sidebar-2',
+		'description'   => esc_html__( 'It\'ll only show up only on Woo pages.', 'smartdevices' ),
+		'before_widget' => '<section id="%1$s" class="woo-sidebar widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',

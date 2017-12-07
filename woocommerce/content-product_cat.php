@@ -19,8 +19,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+remove_action( 'woocommerce_shop_loop_subcategory_title', 'woocommerce_template_loop_category_title', 10 );
+
 ?>
-<li <?php wc_product_cat_class( '', $category ); ?>>
+<li <?php wc_product_cat_class( 'col-xl-2 col-lg-2 col-md-3 col-sm-4 col-xs-6', $category ); ?>> 
 	<?php
 	/**
 	 * woocommerce_before_subcategory hook.

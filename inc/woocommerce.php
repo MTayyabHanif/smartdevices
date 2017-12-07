@@ -18,8 +18,8 @@
 function smartdevices_woocommerce_setup() {
 	add_theme_support( 'woocommerce' );
 	// add_theme_support( 'wc-product-gallery-zoom' );
-	// add_theme_support( 'wc-product-gallery-lightbox' );
-	// add_theme_support( 'wc-product-gallery-slider' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'smartdevices_woocommerce_setup' );
 
@@ -116,10 +116,17 @@ if ( ! function_exists( 'smartdevices_woocommerce_wrapper_before' ) ) {
 	 * @return void
 	 */
 	function smartdevices_woocommerce_wrapper_before() {
-		?>
-		<div id="primary" class="content-area">
-			<main id="main" class="site-main" role="main">
-		<?php
+		if ( is_active_sidebar( 'sidebar-2' ) && !is_product()){
+			?>
+			<div id="primary" class="content-area col-xl-9 col-lg-9 col-md-8 col-sm-8 col-xs-12">
+				<main id="main" class="site-main" role="main">
+			<?php
+		}else{
+			?>
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+			<?php
+		}
 	}
 }
 add_action( 'woocommerce_before_main_content', 'smartdevices_woocommerce_wrapper_before' );
@@ -228,6 +235,34 @@ if ( ! function_exists( 'smartdevices_woocommerce_header_cart' ) ) {
 
 
 
+
+
+
+
+
+/*************************************************
+ *************************************************
+ *  		PRODUCT SHOP COVER IMAGE             *
+ *************************************************
+ *************************************************
+*/
+// removing from previous places
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
+remove_action( 'woocommerce_before_main_content', 'woocommerce_taxonomy_archive_description', 10 );
+remove_action( 'woocommerce_before_main_content', 'woocommerce_product_archive_description', 10 );
+
+// adding fuctions to our new action hook
+
+add_action( 'woocommerce_shop_cover_header', 'woocommerce_smartdevices_shop_cover_Wrapper_open', 10 ); // header wrapper open
+add_action( 'woocommerce_shop_cover_header', 'woocommerce_smartdevices_shop_cover_image', 15); // pilpil cover image - shop's featured image
+add_action( 'woocommerce_shop_cover_header', 'woocommerce_breadcrumb', 20 ); // woo breadcrumbs
+add_action( 'woocommerce_shop_cover_header', 'woocommerce_taxonomy_archive_description', 25 ); // description of category if there is
+add_action( 'woocommerce_shop_cover_header', 'woocommerce_product_archive_description', 25 ); // description of page if there is
+add_action( 'woocommerce_shop_cover_header', 'woocommerce_smartdevices_shop_cover_Wrapper_close', 40 ); // header wrapper close
+
+
+
+
 // Change the breadcrumb delimeter from '/' to '>'
 add_filter( 'woocommerce_breadcrumb_defaults', 'jk_change_breadcrumb_delimiter' );
 function jk_change_breadcrumb_delimiter( $defaults ) {
@@ -237,7 +272,7 @@ function jk_change_breadcrumb_delimiter( $defaults ) {
 
 
 
-if ( ! function_exists( 'woocommerce_smartdevices_headerWrapper_before' ) ) {
+if ( ! function_exists( 'woocommerce_smartdevices_shop_cover_Wrapper_open' ) ) {
 	/**
 	 * Product listing Header.
 	 *
@@ -245,35 +280,14 @@ if ( ! function_exists( 'woocommerce_smartdevices_headerWrapper_before' ) ) {
 	 *
 	 * @return void
 	 */
-	function woocommerce_smartdevices_headerWrapper_before() {
+	function woocommerce_smartdevices_shop_cover_Wrapper_open() {
 		?>
-			<header class="woocommerce-products-header magic-b">
+			<div class="woo-cover-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="woo cover-header row magic-b">
+					<header class="woocommerce-products-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<?php
 	}
 }
-add_action( 'woocommerce_before_main_content', 'woocommerce_smartdevices_headerWrapper_before', 15 );
-
-
-
-if ( ! function_exists( 'woocommerce_smartdevices_headerWrapper_after' ) ) {
-	/**
-	 * Product listing Header.
-	 *
-	 * Closing the header cover wrapper tags.
-	 *
-	 * @return void
-	 */
-	function woocommerce_smartdevices_headerWrapper_after() {
-		?>
-			</header> <!-- Woocommerce shop header cover  -->
-		<?php
-	}
-}
-add_action( 'woocommerce_archive_description', 'woocommerce_smartdevices_headerWrapper_after', 20 );
-
-
-
-
 
 
 
@@ -285,7 +299,7 @@ if ( ! function_exists( 'woocommerce_smartdevices_shop_cover_image' ) ) {
 	 *
 	 * @return void
 	 */
-function woocommerce_smartdevices_shop_cover_image() {
+	function woocommerce_smartdevices_shop_cover_image() {
 		$big_post_image = wp_get_attachment_image_src(get_post_thumbnail_id(get_option( 'woocommerce_shop_page_id' )), 'smartdevices-cover');
 		$big_post_image = $big_post_image[0];
 		
@@ -307,7 +321,71 @@ function woocommerce_smartdevices_shop_cover_image() {
 		}
 	}
 }
-add_action('woocommerce_before_main_content', 'woocommerce_smartdevices_shop_cover_image', 16);
+
+
+if ( ! function_exists( 'woocommerce_smartdevices_headerWrapper_open' ) ) {
+	/**
+	 * Product listing Header.
+	 *
+	 * Opening the header cover wrapper tags.
+	 *
+	 * @return void
+	 */
+	function woocommerce_smartdevices_shop_cover_title() {
+		if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+
+			<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+
+		<?php endif;
+	}
+}
+
+
+
+if ( ! function_exists( 'woocommerce_smartdevices_shop_cover_Wrapper_close' ) ) {
+	/**
+	 * Product listing Header.
+	 *
+	 * Closing the header cover wrapper tags.
+	 *
+	 * @return void
+	 */
+	function woocommerce_smartdevices_shop_cover_Wrapper_close() {
+		?>
+					</header> <!-- .woocommerce-products-header  -->
+				</div> <!-- .cover-header  -->
+			</div> <!-- .woo-cover-header.col-xl-12  -->
+		<?php
+	}
+}
+
+
+function woocommerce_product_archive_description() {
+	// Don't display the description on search results page
+	if ( is_search() ) {
+		return;
+	}
+
+	if ( is_post_type_archive( 'product' ) ) {
+		$shop_page   = get_post( wc_get_page_id( 'shop' ) );
+		if ( $shop_page ) {
+			$description = wc_format_content( $shop_page->post_content );
+			if ( $description ) {
+				echo '<div class="page-description">' . $description . '</div>';
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -318,7 +396,8 @@ add_action('woocommerce_before_main_content', 'woocommerce_smartdevices_shop_cov
  *  		PRODUCT LISTING FUNCTIONS            *
  *************************************************
  *************************************************
- */
+*/
+
 
 
 
@@ -464,3 +543,176 @@ function custom_woocommerce_loop_product_add_to_cart_text() {
 	
 }
 add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_loop_product_add_to_cart_text' );
+
+
+
+
+
+
+// Changing position of pagination shop page
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+add_action( 'woocommerce_after_main_content', 'woocommerce_pagination', 20 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************
+ *************************************************
+ *  		SINGLE PRODUCT FUNCTIONS             *
+ *************************************************
+ *************************************************
+*/
+function woocommerce_breadcrumb_single(){
+	if (is_product()) {
+		?>
+		<div class="single-product single-top-bar">
+			<?php woocommerce_breadcrumb(); ?>
+			
+			<?php
+	}
+}
+add_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb_single', 5 ); // woo breadcrumbs on single page
+
+function woocommerce_share_product_single(){
+	if (is_product()) {
+	?>
+	<div class="socialoptions">
+		<span>Share: </span>
+		<ul class="sharebuttons">
+			<li>
+				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" class="socialdark facebook"><i class="ti-facebook"></i></a>
+			</li>
+			<li>
+				<a href="http://twitter.com/share?text=<?php echo urlencode(html_entity_decode(get_the_title(), ENT_COMPAT, 'UTF-8')); ?>&amp;url=<?php the_permalink(); ?>" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" class="socialdark twitter"><i class="ti-twitter"></i></a>
+			</li>
+			<li>
+				<a href="mailto:?body=<?php the_permalink(); ?>" class="socialdark email"><i class="ti-email"></i></a>
+			</li>
+		</ul>
+	</div>
+	</div> <!-- .single-top-bar -->
+		
+	<?php
+	}
+}
+add_action( 'woocommerce_before_main_content', 'woocommerce_share_product_single', 8 ); // woo breadcrumbs on single page
+
+
+
+
+
+
+// adding next & prev on flexslider
+add_filter( 'woocommerce_single_product_carousel_options', function( $options ) {
+	$options['directionNav'] = true;
+	return $options;
+} );
+
+// removing unncessary things from single page
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+
+
+
+
+/**
+ * Display the review authors gravatar
+ *
+ * @param array $comment WP_Comment.
+ * @return void
+ */
+function woocommerce_review_display_gravatar( $comment ) {
+	echo get_avatar( $comment, apply_filters( 'woocommerce_review_gravatar_size', '100' ), '' );
+}
+
+
+
+
+
+/**
+ * WooCommerce Extra Feature
+ * --------------------------
+ *
+ * Change number of related products on product page
+ * Set your own value for 'posts_per_page'
+ *
+ */ 
+function woo_related_products_limit() {
+  global $product;
+	
+	$args['posts_per_page'] = 6;
+	return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'jk_related_products_args' );
+  function jk_related_products_args( $args ) {
+	$args['posts_per_page'] = 6; // 4 related products
+	$args['columns'] = 3; // arranged in 2 columns
+	return $args;
+}
+
+
+
+
+
+
+
+
+
+/*************************************************
+ *************************************************
+ *  		Categories LOOP functions            *
+ *************************************************
+ *************************************************
+*/
+
+
+
+/**
+ * Show subcategory thumbnails.
+ *
+ * @param mixed $category Category.
+ * @subpackage	Loop
+ */
+function woocommerce_subcategory_thumbnail( $category ) {
+	$small_thumbnail_size  	= apply_filters( 'subcategory_archive_thumbnail_size', 'smartdevices-category' );
+	$dimensions    			= wc_get_image_size( $small_thumbnail_size );
+	$thumbnail_id  			= get_woocommerce_term_meta( $category->term_id, 'thumbnail_id', true );
+
+	if ( $thumbnail_id ) {
+		$image        = wp_get_attachment_image_src( $thumbnail_id, $small_thumbnail_size );
+		$image        = $image[0];
+		$image_srcset = function_exists( 'wp_get_attachment_image_srcset' ) ? wp_get_attachment_image_srcset( $thumbnail_id, $small_thumbnail_size ) : false;
+		$image_sizes  = function_exists( 'wp_get_attachment_image_sizes' ) ? wp_get_attachment_image_sizes( $thumbnail_id, $small_thumbnail_size ) : false;
+	} else {
+		$image        = wc_placeholder_img_src();
+		$image_srcset = $image_sizes = false;
+	}
+
+	if ( $image ) {
+		// Prevent esc_url from breaking spaces in urls for image embeds.
+		// Ref: https://core.trac.wordpress.org/ticket/23605.
+		$image = str_replace( ' ', '%20', $image );
+
+		// Add responsive image markup if available.
+		if ( $image_srcset && $image_sizes ) {
+			echo '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $category->name ) . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" srcset="' . esc_attr( $image_srcset ) . '" sizes="' . esc_attr( $image_sizes ) . '" />';
+		} else {
+			echo '<img src="' . esc_url( $image ) . '" alt="' . esc_attr( $category->name ) . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" />';
+		}
+	}
+}

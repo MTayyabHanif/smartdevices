@@ -2,6 +2,33 @@
 
 jQuery(document).ready(function ($) {
 	
+	
+	
+	///////////////////////////////
+	///////////////////////////////
+	// SLIDER SCRIPT
+	///////////////////////////////
+	///////////////////////////////
+	$('.slider-wrapper img.display-none').removeClass('display-none');
+	$('#slider').bxSlider({
+		mode: 'horizontal',
+		auto: true,
+		autoStart: true,
+		controls: true,
+		pager: false,
+		prevText: '',
+		nextText: '',
+		pause: 3800,
+		speed: 800
+	});
+	///////////////\\\\\\\\\\\\\\\\
+	//   SLIDER SCRIPT ABOVE
+	///////////////\\\\\\\\\\\\\\\\
+	
+	
+	
+
+	
 	// fade out when clicks on external link - smooth animation :)
 	$('a.external').click(function(e) {
 		e.preventDefault();
@@ -27,7 +54,7 @@ jQuery(document).ready(function ($) {
 			$('.header-wrapper').addClass('sticky-header');
 		}
 	});
-
+	
 	//mobile menu
 	$('a.toggle-menu').click(function(e) {
 		e.preventDefault();

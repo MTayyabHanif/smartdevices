@@ -1,11 +1,24 @@
-.site-content{
+#page.site{
     background-color: #FCFCFC;
+}
+.site-content{
     padding-top: $magic-num;
     @media screen and (max-width: 520px) {
         padding-top: 12px;
     }
+    &.active-sidebar{
+        max-width: 1480px;
+        margin: 0 auto;
+        .site-main{
+            max-width: 100%;
+            margin: 0 16px 0 0;
+            @media screen and (max-width: 520px) { 
+                margin: 0;
+            }                
+        }
+    }
 }
 .site-main {
-    max-width: 1280px;
+    max-width: 1480px;
     margin: 0 auto;
 }

@@ -17,14 +17,15 @@
 		}
 		&:first-child{
 			border-top: 1px solid #eaeaea;
-
+			
 		}
 	}
 }
-
-#review_form_wrapper{
+.woocommerce-Reviews{
 	max-width: 48rem;
-	margin: 2rem auto 0.6rem;
+	margin: 3.4rem auto;
+}
+#review_form_wrapper{
 	#reply-title{
 		margin-top: 0;
 		display: block;
@@ -39,11 +40,145 @@
 	}
 	.form-item{margin-bottom: 1rem}
 	.form-submit{
-		padding: 0 0.6rem;
+		padding: 0.6rem 0;
 	}
 	.comment-form-rating{
-		padding: 0 0.6rem;
 		margin-bottom: 1rem
 	}
-
+	
 }
+
+
+
+
+
+
+
+
+
+p.stars{
+	display: inline-block;
+	margin: 0;
+	a{
+		position: relative;
+		height: 1em;
+		width: 1em;
+		text-indent: -999em;
+		display: inline-block;
+		text-decoration: none;
+		margin-right: 1px;
+		font-weight: 400;
+		&:before {
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1em;
+			height: 1em;
+			line-height: 1;
+			font-family: star;
+			content: "\53";
+			color: #43454b;
+			text-indent: 0;
+			opacity: .25
+		}
+	}
+	
+	a:hover~a:before {
+		content: "\53";
+		color: #43454b;
+		opacity: .25
+	}
+	
+	&:hover a:before {
+		content: "\53";
+		color: #fdba0d;
+		opacity: 1
+	}
+	
+	&.selected a.active:before {
+		content: "\53";
+		color: #fdba0d;
+		opacity: 1
+	}
+	
+	&.selected a.active~a:before {
+		content: "\53";
+		color: #43454b;
+		opacity: .25
+	}
+	
+	&.selected a:not(.active):before {
+		content: "\53";
+		color: #fdba0d;
+		opacity: 1
+	}
+}
+
+.woocommerce-review-link{display: none;}
+.star-rating {
+	overflow: hidden;
+	position: relative;
+	height: 1.618em;
+	line-height: 1.618;
+	font-size: 1em;
+	float: right;
+	font-family: 'star';
+	font-weight: 400;
+	width: 85px;
+	&:before {
+		content: "\53\53\53\53\53";
+		opacity: .25;
+		float: left;
+		top: 0;
+		left: 0;
+		position: absolute;
+		font-family: 'star';
+		color: #aeb6d8;
+	}
+	
+	span {
+		overflow: hidden;
+		float: left;
+		top: 0;
+		left: 0;
+		position: absolute;
+		padding-top: 1.5em
+	}
+	
+	span:before {
+		content: "\53\53\53\53\53";
+		top: 0;
+		font-family: 'star';
+		position: absolute;
+		left: 0;
+		color: #f3af00
+	}
+}
+
+
+
+// single comment style
+.comment-text{
+	.avatar-rating-wrapper{
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 12px;
+		img{
+			border-radius: 2px;
+		}
+		.star-rating{
+			float: none;
+			margin: 0 auto;
+			margin-top: 0.4rem;
+		}
+	}
+	.description-authormeta-wrapper{
+		display: inline-block;
+		vertical-align: top;
+	}
+	.meta{
+		font-style: italic;
+	}
+}
+

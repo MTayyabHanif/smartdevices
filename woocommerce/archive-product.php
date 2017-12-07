@@ -24,39 +24,49 @@ if ( ! defined( 'ABSPATH' ) ) {
 // removing products count
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 
+
+
 get_header( 'shop' ); ?>
+
+	<?php
+		/**
+		 * woocommerce_shop_cover_header hook.
+		 * 
+		 * @hooked woocommerce_smartdevices_shop_cover_Wrapper_open - 10
+		 * @hooked woocommerce_smartdevices_shop_cover_image - 15
+		 * @hooked woocommerce_breadcrumb - 20
+		 * @hooked woocommerce_taxonomy_archive_description - 25
+		 * @hooked woocommerce_product_archive_description - 25
+		 * @hooked woocommerce_smartdevices_shop_cover_Wrapper_close - 40
+		 */
+		do_action( 'woocommerce_shop_cover_header' );
+	?>
+
+
+		
+	<?php
+		/**
+		 * woocommerce_sidebar hook.
+		 *
+		 * @hooked woocommerce_get_sidebar - 10
+		 */
+		do_action( 'woocommerce_sidebar' );
+	?>
+
+
 
 	<?php
 		/**
 		 * woocommerce_before_main_content hook.
 		 *
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_smartdevices_headerWrapper_before - 15
-		 * @hooked woocommerce_smartdevices_shop_cover_image - 16
-		 * @hooked woocommerce_breadcrumb - 20
 		 * @hooked WC_Structured_Data::generate_website_data() - 30
 		 */
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
 
-		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
-			<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-
-		<?php endif; ?>
-
-		<?php
-			/**
-			 * woocommerce_archive_description hook.
-			 *
-			 * @hooked woocommerce_taxonomy_archive_description - 10
-			 * @hooked woocommerce_product_archive_description - 10
-			 * @hooked woocommerce_smartdevices_headerWrapper_after - 20
-			 */
-			do_action( 'woocommerce_archive_description' );
-		?>
-
+		
 
 		<?php if ( have_posts() ) : ?>
 
@@ -96,7 +106,7 @@ get_header( 'shop' ); ?>
 				/**
 				 * woocommerce_after_shop_loop hook.
 				 *
-				 * @hooked woocommerce_pagination - 10
+				 * @hooked woocommerce_pagination - 10 // removed
 				 */
 				do_action( 'woocommerce_after_shop_loop' );
 			?>
@@ -123,13 +133,5 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_after_main_content' );
 	?>
 
-	<?php
-		/**
-		 * woocommerce_sidebar hook.
-		 *
-		 * @hooked woocommerce_get_sidebar - 10
-		 */
-		do_action( 'woocommerce_sidebar' );
-	?>
 
 <?php get_footer( 'shop' ); ?>

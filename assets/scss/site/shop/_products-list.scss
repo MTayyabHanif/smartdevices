@@ -4,6 +4,7 @@
     background-color: #000;
     border-radius: 8px;
     overflow: hidden;
+    margin: 0 auto;
     @media screen and (max-width: 40em){
         border-radius: 0px;
     }  
@@ -106,13 +107,14 @@
 
 //sorting tabs
 .woocommerce-tab-ordering{
-    box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.15);
+    box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.10);
+    background-color: #fff;
     padding: 8px 5px 0px;
     @media screen and (max-width: 520px) {
         padding: 0 5px;
         margin-bottom: 12px;
     }
-    .tabs{
+    &.tabs{
         position: relative;
         a.tab-name {
             padding: 8px 18px;
@@ -123,7 +125,7 @@
             text-decoration: none;
             color: #222;
             border-bottom: 2px solid rgba(242, 101, 34, 0);
-    
+            
             &:hover{
                 color: $primary;
             }
@@ -162,7 +164,7 @@
     a{
         display: inline-block;
     }
-    .woocommerce-ordering{
+    .woocommerce-order{
         margin: 0;
         padding: 12px;
     }
@@ -185,7 +187,7 @@
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
         justify-content: space-between;
-        .woocommerce-ordering{
+        .woocommerce-order{
             padding-left: 6px;
             select{
                 height: 32px;
@@ -213,11 +215,16 @@
 
 
 
-
+/*
+*
+* PRODUCTS LISTINGS
+*
+*/
 ul.products {
     margin: 0;
 	padding: 0;
 }
+
 
 ul.products li.product {
     list-style: none;
@@ -225,18 +232,24 @@ ul.products li.product {
     
     // link wrapper
     .product-loop-link-wrapper{
-        box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.15);
+        box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.10);
+        background-color: #fff;
         margin: 18px;
         padding: 1rem 0;
         @media screen and (max-width: 40em) { 
-            margin: 8px;
+            margin: 8px !important;
             padding: 0.75rem 0;
         }        
         transition: box-shadow .2s ease-in-out;
         border-radius: 4px;
         &:hover{
-            box-shadow: 0 0px 8px 1px rgba(34, 35, 36, 0.15);
+            box-shadow: 0 0px 8px 1px rgba(34, 35, 36, 0.10);
         }
+    }
+
+    // stars rating
+    .star-rating {
+        display: none;
     }
     
     // anchor link
@@ -244,11 +257,14 @@ ul.products li.product {
         display: block;
         text-decoration: none;
         text-align: center;
+        &:hover{
+            color: $primary;
+        }
     }
     
     // sale tag
     .onsale{
-        position: absolute;
+        display: none;
     }
     
     // thumbnail
@@ -298,5 +314,39 @@ ul.products li.product {
     //mutual
     .price, .woo-btn{
         margin-top: 6px;
+    }
+}
+.active-sidebar ul.products li.product {
+    .product-loop-link-wrapper{
+        margin: 8px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*
+*
+* PAGINATION
+*
+*/
+
+.woo-pagination-wrapper {
+    .pagination span, .pagination a{
+        box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.10);
+        padding: 1rem 1.4rem;        
+        border: 0;
+        background-color: #fff;
+    }
+    span.current{
+        background-color: $primary;
+        color: #fff;
+        font-weight: 500;
     }
 }

@@ -15,15 +15,7 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'smartdevices' ) ); ?>"><?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'smartdevices' ), 'WordPress' );
-			?></a>
-			<span class="sep"> | </span>
-			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'smartdevices' ), 'smartdevices', '<a href="http://injectthemes.co">Inject Themes</a>' );
-			?>
+			<p class="m-0 full-width text-center color-light">&copy; 2017 Smart Devices <a class="pl-4 color-light" href="">Privacy Policy</a> <a class="pl-4 color-light" href="">Terms of Use</a></p>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

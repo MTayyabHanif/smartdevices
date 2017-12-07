@@ -36,7 +36,7 @@ figure {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0);
 }
 
 .progressiveMedia-thumbnail {
@@ -107,3 +107,7 @@ figure {
     -webkit-transition: visibility .2s linear 0s, opacity 1s 0s;
     transition: visibility .2s linear 0s, opacity 1s 0s;
 }
+.progressiveMedia.is-canvasLoaded.is-imageLoaded .progressiveMedia-canvas {
+    visibility: hidden;
+}
+    

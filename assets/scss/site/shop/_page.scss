@@ -1,0 +1,33 @@
+// home page styles
+.home_section{
+    >h2{
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 2rem 8px -0.4rem;
+        color: #666666;
+        >span{
+            margin: 0 0.6rem 0 1rem;
+            vertical-align: -2px;
+            color: #d6d6d6;
+        }
+    } 
+    ul.products li.product .product-loop-link-wrapper{
+        margin: 8px;
+    }
+}
+hr.home{
+    max-width: 46rem;
+}
+
+// category loop styles
+.product-category{
+    a{
+        box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.1);
+        margin: 8px;
+        background-color: #fff;
+        padding: 0 20px;
+        &:hover{
+            box-shadow: 0 0px 8px 1px rgba(34, 35, 36, 0.10);
+        }
+    }
+}

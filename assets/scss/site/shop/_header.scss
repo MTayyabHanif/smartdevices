@@ -4,11 +4,11 @@
     
     //sticky header
     padding: 34px;
-    @media screen and (max-width: 520px){
+    @media screen and (max-width: 40em){
         padding: 25px;
     }        
     .header-wrapper{
-        box-shadow: 0 1px 12px -2px #cecece;
+        box-shadow: 0 1px 0 0 rgba(0,0,0,0.066);
         background-color: #fff;
         width: 100%;
         top: 0;
@@ -140,7 +140,7 @@
     //header search 
     .search-bar {
         display: inline-block;
-        padding-right: 25px;
+        padding-right: 14px;
         min-width: 211px;
         text-align: right;
         @media screen and (max-width: 1200px){
@@ -157,8 +157,16 @@
             min-width: 0;
         }            
         
-        span {
-            display: block;
+        >span {
+            display: inline-block;
+            padding: 1rem;
+            cursor: pointer;
+            &:hover{
+                color: $primary;
+                i{
+                    font-weight: 600;
+                }
+            }
         }
         @media screen and (max-width: 520px){
             padding-right: 16px;

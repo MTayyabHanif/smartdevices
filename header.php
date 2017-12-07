@@ -63,4 +63,25 @@
 		</div><!-- .header-wrapper -->
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+<?php
+	if ( !is_product()) {
+		if ( is_active_sidebar( 'sidebar-2'  )  && !is_home() && !is_front_page() && is_woocommerce()) {
+			?>
+
+			<div id="content" class="site-content row active-sidebar">
+				
+		<?php
+		}elseif ( is_active_sidebar( 'sidebar-1'  )) { ?>
+
+			<div id="content" class="site-content row active-wp-sidebar">
+		
+		<?php
+		}else{
+			?>
+
+			<div id="content" class="site-content">
+
+			<?php
+		}
+	}
+?>
