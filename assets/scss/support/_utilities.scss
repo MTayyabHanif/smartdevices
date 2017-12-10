@@ -18,10 +18,7 @@ Markup:
 .float-right                 		- float: right;
 .clearfix                		- Clear floats to keep the parent container in shape
 
-.med-width                	- max-width  980px
-.large-width                	- max-width  1180px
 .full-width                	- width & max width 100%
-.max-full-width           	-  max width 100%
 
 .display-block             	- block
 .display-inlineBlock       - inline-block
@@ -60,6 +57,7 @@ Styleguide 4.0
 // widths
 .full-width {
 	max-width: 100% !important;
+	width: 100% !important;
 }
 
 
@@ -420,7 +418,8 @@ $mr-breakpoints: (
 					(xs, 520px),
 					(sm, 768px),
 					(md, 992px),
-					(lg, 1200px)
+					(lg, 1260px),
+					(xl, 1400px)
             	);
 
 
@@ -442,47 +441,16 @@ $spacers: (
            10: ($spacer * 7.5)
            ) !default;
 
-// This variable affects the `.h-*` and `.w-*` classes. inside the loops generatin
-$sizes: (
-         25: 25%,
-         50: 50%,
-         75: 75%,
-         100: 100%
-         ) !default;
-@each $prop, $abbrev in (width: width, height: height) {
-	@each $size, $length in $sizes {
-		.#{$abbrev}-#{$size} { #{$prop}: $length !important; }
-	}
-}
-
- 
-
-//generatinng margins and paddings outside from breakfpoint for XS and global
-@each $prop, $abbrev in (margin: m, padding: p) {
-	@each $val, $length in $spacers {
-		.#{$abbrev}-#{$val} {
-			#{$prop}: $length !important;
-		}
-		.#{$abbrev}t-#{$val}{
-			#{$prop}-top: $length !important;
-		}
-		.#{$abbrev}r-#{$val}{
-			#{$prop}-right: $length !important;
-		}
-		.#{$abbrev}b-#{$val}{
-			#{$prop}-bottom: $length !important;
-		}
-		.#{$abbrev}l-#{$val}{
-			#{$prop}-left: $length !important;
-		}
-	}
-}
+           
+           
+           
+           // displays, floats, alignments
 @each $val in $mr-breakpoints {
-	$col: nth($val, 1);
+      $col: nth($val, 1);
 	$size: nth($val, 2);
 
 	@media only screen and (max-width: #{$size}) {
-		//displays
+            //displays
 		.display-#{$col}-none         { display: none !important; }
 		.display-#{$col}-inline       { display: inline !important; }
 		.display-#{$col}-inlineBlock { display: inline-block !important; }
@@ -501,22 +469,55 @@ $sizes: (
 		//alignments
 		.text-#{$col}-left   { text-align: left !important; }
 		.text-#{$col}-right  { text-align: right !important; }
-		.text-#{$col}-center { text-align: center !important; }
+            .text-#{$col}-center { text-align: center !important; }
+      }
+}
+
+
+
+//generating margins and paddings outside from breakpoint for XS and global
+@each $prop, $abbrev in (margin: m, padding: p) {
+      @each $val, $length in $spacers {
+            .#{$abbrev}-#{$val} {
+                  #{$prop}: $length !important;
+            }
+      }
+      @each $val, $length in $spacers {
+            .#{$abbrev}t-#{$val}{
+                  #{$prop}-top: $length !important;
+            }
+            .#{$abbrev}r-#{$val}{
+                  #{$prop}-right: $length !important;
+            }
+            .#{$abbrev}b-#{$val}{
+                  #{$prop}-bottom: $length !important;
+            }
+            .#{$abbrev}l-#{$val}{
+                  #{$prop}-left: $length !important;
+            }
+      }
+}
+//generating margins and paddings using breakpoints
+@each $val in $mr-breakpoints {
+	$col: nth($val, 1);
+	$size: nth($val, 2);
+      
+	@media only screen and (min-width: #{$size}) {
 
 		@each $prop, $abbrev in (margin: m, padding: p) {
-			@each $val, $length in $spacers {
+                  @each $val, $length in $spacers {
 
 				.#{$abbrev}-#{$col}-#{$val} {
-					#{$prop}: $length !important;
+                              #{$prop}: $length !important;
 				}
 				.#{$abbrev}t-#{$col}-#{$val}{
 					#{$prop}-top: $length !important;
 				}
 				.#{$abbrev}r-#{$col}-#{$val}{
-					#{$prop}-right: $length !important;
+                              #{$prop}-right: $length !important;
 				}
 				.#{$abbrev}b-#{$col}-#{$val}{
-					#{$prop}-bottom: $length !important;
+                              #{$prop}-bottom: $length !important;
 				}
 				.#{$abbrev}l-#{$col}-#{$val}{
 					#{$prop}-left: $length !important;

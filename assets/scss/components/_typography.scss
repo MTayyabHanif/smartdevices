@@ -34,7 +34,7 @@ p, pre, article, blockquote, .magic-b{
 hr{
 	border: none;
 	border-bottom: 1px solid rgba(210, 210, 210, 0.2);
-    margin: 2rem auto;
+      margin: 2rem auto;
 }
 
 
@@ -43,8 +43,8 @@ p{
 	margin-top: 0;
 	line-height: $font-size * $line-height;
 	@media screen and (max-width: 40em) {
-		@include rem(font-size, $font-size + 2);
-		line-height: $font-size--smaller * $line-height;
+		font-size: 14px;
+		line-height: $font-size--smaller * $line-height - 4;
 	}
 }
 
