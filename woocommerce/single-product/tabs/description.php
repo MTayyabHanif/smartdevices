@@ -31,3 +31,7 @@ global $post;
  //endif; ?>
 
 <?php the_content(); ?>
+
+<div class="desc-footer">
+    <button id="show-specs" class="primary button">View specifications <span class="ti-angle-right"></span></button>
+</div>

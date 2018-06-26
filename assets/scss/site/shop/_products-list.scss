@@ -1,4 +1,9 @@
 //cover header
+.cover-header{
+    @media screen and (max-width: 40em){
+        margin-bottom: 6px;
+    }
+}
 .woocommerce-products-header {
     position: relative;
     background-color: #000;
@@ -18,10 +23,11 @@
     }
     .aspectRatioPlaceholder {
         min-width: 600px;
-        opacity: 0.7;
+        opacity: 0.35;
     }
     .woocommerce-products-header__title,
     .page-description,
+    .term-description,
     .woocommerce-breadcrumb {
         position: absolute;
         width: 100%;
@@ -40,41 +46,42 @@
         margin: 0;
         display: none;
     }
-    .page-description {
+    .page-description, .term-description {
         top: 43%;
-        h1{font-weight: 500; margin-bottom: 1rem;}
+        h1{
+            text-shadow: -1px 1px 9px #090909;
+            font-weight: 500; 
+            margin-bottom: 1rem; 
+            line-height: 1.15;
+        }
         p{
             color: #c0c0c0;
+            height: 107px;
+            line-height: 1.25;
+            text-shadow: -1px 1px 9px #090909;
+            overflow: hidden;
         }
+        .search-result{color: $primary-light}
     }
     
     @media screen and (max-width: 768px) { 
         .woocommerce-breadcrumb {
             top: 10%;
         }
-        .page-description {
+        .page-description, .term-description {
             top: 32%;
         }        
     }        
     @media screen and (max-width: 640px) { 
-        .page-description {
-            top: 42%;
-            h1{
-                font-size: 1.4rem;
-                line-height: 1;
-                margin-bottom: 0.6rem;
-            }
-        }        
-    }        
-    @media screen and (max-width: 640px) { 
         margin-bottom: 12px;
-        .page-description {
+        .page-description, .term-description {
             h1{
                 font-size: 1.2rem;
                 margin-bottom: 0.4rem;
             }
             p{
                 font-size: 0.86rem;
+                height: 56px;
             }
         }      
     }
@@ -82,7 +89,7 @@
         .aspectRatioPlaceholder {
             min-width: 550px;
         }
-        .page-description {
+        .page-description, .term-description {
             h1{
                 margin-bottom: 0.2rem;
             }
@@ -95,14 +102,25 @@
         .aspectRatioPlaceholder {
             min-width: 450px;
         }
-        .page-description {
-            top: 48%;
+        .page-description, .term-description {
             p{
                 font-size: 0.8rem;
             }
         }    
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //sorting tabs
@@ -246,7 +264,7 @@ ul.products li.product {
             box-shadow: 0 0px 8px 1px rgba(34, 35, 36, 0.10);
         }
     }
-
+    
     // stars rating
     .star-rating {
         display: none;

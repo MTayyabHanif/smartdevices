@@ -7,7 +7,20 @@
  * @package SmartDevices
  */
 
-get_header(); ?> 
+get_header(); ?>
+
+<?php
+	/**
+	 * woocommerce_shop_cover_header hook.
+	 *
+	 * @hooked woocommerce_smartdevices_blog_cover_Wrapper_open - 10
+	 * @hooked woocommerce_smartdevices_blog_cover_image - 15
+	 * @hooked woocommerce_breadcrumb - 20
+	 * @hooked woocommerce_product_archive_description - 25
+	 * @hooked woocommerce_smartdevices_shop_cover_Wrapper_close - 40
+	 */
+	do_action( 'woocommerce_blog_cover_header' );
+?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -15,15 +28,9 @@ get_header(); ?>
 		<?php
 		if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
 			<?php
 			/* Start the Loop */
+
 			while ( have_posts() ) : the_post();
 
 				/*

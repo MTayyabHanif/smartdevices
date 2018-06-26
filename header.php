@@ -23,46 +23,59 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'smartdevices' ); ?></a>
-	<div class="mobile-menu-backdrop"></div>
-	<nav id="secondary-navigation" class="mobile-navigation">
-		<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-2',
-				'menu_id'        => 'mobile-menu',
-				) );
-				?>
-	</nav><!-- #mobile-navigation -->
+	<div class="searchbar-backdrop"></div>
 	<header id="masthead" class="site-header">
 		<div class="header-wrapper">
-			<a class="toggle-menu display-xs-inlineBlock" aria-controls="mobile-menu" aria-expanded="false"><span class="ti-menu"></span></a>
 			<div class="site-branding">
-				<?php
-				the_custom_logo(); ?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php
-				$description = get_bloginfo( 'description', 'display' );
-				if ( $description || is_customize_preview() ) : ?>
-					<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-					<?php
-				endif; ?>
+                    <?php
+                    if (has_custom_logo()) {
+
+                        $custom_logo_id = get_theme_mod( 'custom_logo' );
+                        $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                        ?>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                            <img src="<?php echo $image[0]; ?>" alt="<?php bloginfo( 'name' ); ?>">
+                            <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+                        </a>
+                    <?php
+                    }else{
+                    ?>
+
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                        <h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+                    </a>
+
+                    <?php
+                    }
+                    ?>
 			</div><!-- .site-branding -->
 			
-			<nav id="site-navigation" class="main-navigation display-xs-none">
-				<?php
-					wp_nav_menu( array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
-					) );
-				?>
+			<nav id="site-navigation" class="main-navigation">
+            <a class="toggle-menu display-xs-inlineBlock" aria-controls="mobile-menu" aria-expanded="false"><span class="ti-menu"></span></a>
+                <div class="menu-wrapper">
+                    <?php get_product_search_form(); ?>
+                    <?php
+                        wp_nav_menu( array(
+                            'theme_location' => 'menu-1',
+                            'menu_id'        => 'primary-menu',
+                        ) );
+                    ?>
+                </div>
 			</nav><!-- #site-navigation -->
 			
-			<div class="search-bar" id="header-search">
+			<div class="desktop search-bar display-xs-none" id="header-search">
 				<span><i class="ti-search"></i></span>
-			</div>
-			<!-- .search-bar -->
+			</div><!-- .search-bar -->
+			
+			<div class="mobile search-bar display-xs-block" id="header-search">
+				<span><i class="ti-search"></i></span>
+			</div><!-- .search-bar -->
 		</div><!-- .header-wrapper -->
 	</header><!-- #masthead -->
-
+	<div class="mobile-search" id="mobile-search">
+        <?php get_product_search_form(); ?>
+	</div><!-- .mobile-search -->
+                            
 <?php
 	if ( !is_product()) {
 		if ( is_active_sidebar( 'sidebar-2'  )  && !is_home() && !is_front_page() && is_woocommerce()) {

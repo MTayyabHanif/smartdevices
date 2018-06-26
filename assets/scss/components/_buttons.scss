@@ -25,11 +25,7 @@ Markup:
 	box-sizing: border-box;
 	color: $color-black;
 	cursor: pointer;
-	display: -moz-box;
-	display: -ms-inline-flexbox;
-	display: -webkit-box;
-	display: -webkit-inline-flex;
-	display: inline-flex;
+	display: inline-block;
 	font-size: inherit;
 	font-style: normal;
 	font-weight: 400;

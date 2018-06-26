@@ -4,129 +4,125 @@
 /*
 * 404
 */
-
 @import "site/shop/404";
 
 /*
 * base
 */
-
-@import "site/shop/base"; 
+@import "site/shop/base";
 
 /*
 * cart
 */
-
 @import "site/shop/cart";
 
 /*
 * checkout
 */
-
 @import "site/shop/checkout";
 
 /*
 * footer
 */
-
 @import "site/shop/footer";
 
 /*
 * header
 */
-
 @import "site/shop/header";
 
 /*
 * layout
 */
-
 @import "site/shop/layout";
 
 /*
 * layout
 */
-
 @import "site/shop/lightbox";
 
 /*
 * menu
 */
-
 @import "site/shop/menu";
 
 /*
 * page
 */
-
 @import "site/shop/page";
 
 /*
 * pilpil
 */
-
 @import "site/shop/pilpil";
 
 /*
 * product-single
 */
-
 @import "site/shop/product-single";
 
 /*
 * products-list
 */
-
 @import "site/shop/products-list";
+
+/*
+* category_listing
+*/
+@import "site/shop/category_listing";
 
 /*
 * reviews
 */
-
 @import "site/shop/reviews";
 
 /*
 * search
 */
-
 @import "site/shop/search";
 
 /*
 * slider
 */
-
 @import "site/shop/slider";
 
 /*
 * sidebar
 */
- 
 @import "site/shop/sidebar";
 
 
+
+
+
+
+
+
+
+
+
 /**** BLOG SIDE ******/
-
-
 /*
 * comments
 */
-
 @import "site/blog/comments";
 
 /*
 * page
 */
-
 @import "site/blog/page";
 
 /*
 * postlist
 */
-
 @import "site/blog/postlist";
 
 /*
 * single_post
 */
-
 @import "site/blog/single_post";
+
+/*
+* single_post_content
+*/
+@import "site/blog/single_post_content";

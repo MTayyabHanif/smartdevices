@@ -17,7 +17,7 @@ Class Reference
 .($fg-class-off)-(namespace)-(number):    This will offset a column by a specific number of columns in the defined namespace. Valid numbers are 1-11.
 See docs about the row, col and offset class name variables, default is 'row', 'col', 'off'.
 
-Default valid namespaces are xs, sm, md, lg. The xs namespace is default and uses no media queries. 
+Default valid namespaces are xs, sm, md, lg. The xs namespace is default and uses no media queries.
 
 */
 
@@ -35,22 +35,37 @@ Default valid namespaces are xs, sm, md, lg. The xs namespace is default and use
 * $fg-class-off string used for the offset class
 */
 $fg-columns: 12 !default;
-
+$fg-gutter: 18px !default;
+$fg-sm-gutter: 10px !default;
 $fg-class-row: 'row' !default;
 $fg-class-col: 'col' !default;
 $fg-class-off: 'off' !default;
 
 
 .container-fluid {
-	padding-right: 2rem;
-	padding-left: 2rem;
+	padding-right: $fg-gutter;
+	padding-left: $fg-gutter;
 	@media only screen and (max-width: 768px) {
-		padding-right: 1rem;
-		padding-left: 1rem;
+		padding-right: $fg-gutter;
+		padding-left: $fg-gutter;
 	}
 	@media only screen and (max-width: 440px) {
-		padding-right: 0.6rem;
-		padding-left: 0.6rem;
+		padding-right: $fg-gutter;
+		padding-left: $fg-gutter;
+	}
+}
+
+
+.container-fluid.small-gutters {
+	padding-right: $fg-sm-gutter;
+	padding-left: $fg-sm-gutter;
+	@media only screen and (max-width: 768px) {
+		padding-right: $fg-sm-gutter;
+		padding-left: $fg-sm-gutter;
+	}
+	@media only screen and (max-width: 440px) {
+		padding-right: $fg-sm-gutter;
+		padding-left: $fg-sm-gutter;
 	}
 }
 
@@ -98,9 +113,9 @@ $fg-breakpoints: (
 * Calculate column size percentage
 */
 @function get-col-percent($column-num) {
-	
+
 	@return $column-num / $fg-columns * 100%;
-	
+
 }
 
 /**
@@ -115,7 +130,18 @@ $fg-breakpoints: (
 		#{ $type }-right: $value;
 	}
 }
-
+.#{ $fg-class-row }.with-gutters {
+ @include spacing( ( -$fg-gutter ), margin, horizontal );
+}
+.#{ $fg-class-row }.with-gutters > %#{ $fg-class-col }{
+ @include spacing( ( $fg-gutter ), padding, horizontal );
+}
+.#{ $fg-class-row }.with-sm-gutters {
+ @include spacing( ( -$fg-sm-gutter ), margin, horizontal );
+}
+.#{ $fg-class-row }.with-sm-gutters > %#{ $fg-class-col }{
+ @include spacing( ( $fg-sm-gutter ), padding, horizontal );
+}
 /**
 * Row wrapper class, flex box parent.
 */
@@ -163,7 +189,7 @@ $fg-breakpoints: (
 	.#{ $fg-class-col }-#{$namespace} {
 		@extend %#{ $fg-class-col }-flex;
 	}
-	
+
 	@for $i from 1 through $fg-columns {
 		.#{ $fg-class-col }-#{$namespace}-#{$i} {
 			@extend %#{ $fg-class-col };
@@ -172,7 +198,7 @@ $fg-breakpoints: (
 }
 
 @mixin grid-sizes( $namespace ) {
-	
+
 	// Run the loop for as many columns as speficied
 	@for $i from 1 through $fg-columns {
 		.#{ $fg-class-col }-#{$namespace}-#{$i} {
@@ -180,22 +206,22 @@ $fg-breakpoints: (
 			max-width:  get-col-percent($i);
 		}
 	}
-	
+
 	@for $i from 1 through $fg-columns {
-		
+
 		// Don't include the .off class for the last column
 		@if ( $i != $fg-columns ) {
 			.#{ $fg-class-off }-#{$namespace}-#{$i} {
 				margin-left: get-col-percent($i);
 			}
 		}
-		
+
 	}
-	
+
 	.#{ $fg-class-off }-#{$namespace}-reset {
 		margin-left: 0;
 	}
-	
+
 	.start-#{$namespace} {
 		-webkit-box-pack: start;
 		-ms-flex-pack: start;
@@ -256,27 +282,27 @@ $fg-breakpoints: (
 * Step 2, for each namespace, wrap the col width/offset measurements in their breakpoint media query
 */
 @each $val in $fg-breakpoints {
-	
+
 	$namespace: nth($val, 1);
 	@include grid-base( $namespace );
-	
+
 }
 @each $val in $fg-breakpoints {
 	@if length($val) == 1 {
-		
+
 		$namespace: nth($val, 1);
 		@include grid-sizes( $namespace );
-		
+
 	} @else {
-		
+
 		$namespace: nth($val, 1);
 		$size: nth($val, 2);
-		
+
 		@media only screen and (max-width: #{$size}) {
 			@include grid-sizes( $namespace );
 		}
 	}
-} 
+}
 
 @media only screen and (min-width: 1290px) {
 	@include grid-sizes( 'xl' );

@@ -2,37 +2,100 @@
 /**
  * Accessibility
  */
-.screen-reader-text {
-	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
-}
+ .screen-reader-text {
+ 	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+ 	clip: rect(1px, 1px, 1px, 1px);
+ 	position: absolute !important;
+ }
 
-.screen-reader-text:focus {
-	background-color: #f1f1f1;
-	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-	clip: auto !important;
-	display: block;
-	font-weight: bold;
-	height: auto;
-	left: 0;
-	line-height: normal;
-	text-decoration: none;
-	top: 0;
-	width: auto;
-	z-index: 100000; /* Above WP toolbar */
-	outline: none;
-}
+ .screen-reader-text:focus {
+ 	background-color: #f1f1f1;
+ 	border-radius: 3px;
+ 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+ 	clip: auto !important;
+ 	display: block;
+ 	font-weight: bold;
+ 	height: auto;
+ 	left: 0;
+ 	line-height: normal;
+ 	text-decoration: none;
+ 	top: 0;
+ 	width: auto;
+ 	z-index: 100000; /* Above WP toolbar */
+ 	outline: none;
+ }
 
 /**
  * Clearing
  */
-.clear,
-.entry-content,
-.comment-content,
-.site-header,
-.site-content,
-.site-footer {
-	@include clearfix;
+ .clear,
+ .entry-content,
+ .comment-content,
+ .site-header,
+ .site-content,
+ .site-footer {
+ 	@include clearfix;
+ }
+
+
+
+
+
+/*
+* POSTLIST AND SINGLE POST's
+*/
+
+.post-footer{
+	.comment-meta,
+	.author-date-meta{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.author-date-meta{
+		width: 150px;
+		text-align: left;
+		color:  #333;
+		a {
+			color:  #333;
+		}
+
+		img, span {
+			display:  inline-block;
+			vertical-align:  middle;
+			font-size:  12px;
+			line-height:  1;
+		}
+
+		img {
+			max-width: 42px;
+			border-radius:  50%;
+			float:  left;
+			margin-bottom: 2px;
+			margin-right:  12px;
+		}
+
+		.posted-on {
+			margin-top: -15px;
+		}
+	}
+	.comment-meta{
+		opacity: .45;
+		float: right;
+		margin-top: 12px;
+		.ti-comments{
+			position: relative;
+			top: 2px;
+		}
+	}
+}
+
+.posted-on{
+	time{
+		&.published{
+			display: inline-block;
+		}
+		&.with-upd{
+			display: none;
+		}
+	}
 }

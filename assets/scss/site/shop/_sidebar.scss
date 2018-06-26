@@ -68,11 +68,13 @@
     }
 }
 .woof_submit_search_form_container{
-    padding: 0 16px 20px;
+    padding: 0 0 20px;
 }
 button.woof_submit_search_form{
 	@include button($white, $primary);
-    font-size: 0.86rem;
+    font-size: 14px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 }
 .woo-sidebar.widget.WOOF_Widget {
     font-size: 0.75rem;

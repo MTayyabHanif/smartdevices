@@ -56,19 +56,20 @@ foreach ($selected_response as $value)
 	if ($value !== "") {
 		if (strpos(" selected='selected'", $value) !== false)
 		{
+
 			if ($i == 1) { // checking if order by popularity is selected
 				$popularSelected = "active";
 			}
-			if ($i == 4) { // checking if order by price-low-to-high is selected
+			if ($i == 5) { // checking if order by price-low-to-high is selected
 				$lowPriceSelected = "active";
 			}
-			if ($i == 5) { // checking if order by price-high-to-low is selected
+			if ($i == 6) { // checking if order by price-high-to-low is selected
 				$highPriceSelected = "active";
 			}
 			break;
-		}  
+		}
 	}
-} 
+}
 $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
 ?>
 
@@ -85,7 +86,7 @@ $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
 			<?php endforeach; ?>
 		</select>
 		<?php wc_query_string_form_fields( null, array( 'orderby', 'submit' ) ); ?>
-	</form> 
+	</form>
 	<div class="woocommerce-filter display-none display-xs-inlineBlock"><span class="button">Show filters <span class="ti-filter"></span></span></div>
 
 </div>

@@ -55,9 +55,11 @@ Styleguide 4.0
 
 
 // widths
-.full-width {
-	max-width: 100% !important;
+.width-100 {
 	width: 100% !important;
+}
+.full-width, .all_full-width p{
+	max-width: 100% !important;
 }
 
 
@@ -91,6 +93,10 @@ Styleguide 4.0
 .lowercase {	text-transform: lowercase !important;}
 
 
+//linheights
+.low-lineheight {
+    line-height: 1.18;
+}
 
 
 //alignments
@@ -372,7 +378,9 @@ a.color-focus:hover{opacity: .8; color: $color-focus;}
 }
 
 
-//border radius
+//border
+.thin-border {border: 2px solid;}
+.thick-border {border: 2px solid;}
 .radius-circle {border-radius: 50% !important;}
 .radius-small {border-radius: 4px !important;}
 

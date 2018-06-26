@@ -15,7 +15,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php smartdevices_posted_on(); ?>
+			<?php smartdevices_blog_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->

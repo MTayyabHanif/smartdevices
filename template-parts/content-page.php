@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page.php
+ * Template part for displaying posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -8,48 +8,58 @@
  */
 
 ?>
+<div class="single-article-wrapper">
+	<article id="post-<?php the_ID(); ?>" <?php post_class('from-page'); ?>>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-	if (!is_home() && !is_front_page()) {
-	?>
+
+		<div class="post_image">
+
+			<?php
+			$big_post_image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'smartdevices-cover');
+			$big_post_image_src = $big_post_image[0];
+			$big_post_image_width = $big_post_image[1];
+			$big_post_image_height = $big_post_image[2];
+
+			$small_post_image = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'smartdevices-tiny');
+			$small_post_image = $small_post_image[0];
+			$image_ID = get_post_thumbnail_id(get_the_ID());
+
+
+			if ( has_post_thumbnail( get_the_ID() ) || has_post_thumbnail( $cat->term_id ) ) {  ?>
+				<div class="aspectRatioPlaceholder <?php echo $image_ID; ?>"><div class="aspectRatioPlaceholder-fill"></div><div class="progressiveMedia" data-width="<?php echo $big_post_image_width; ?>" data-height="<?php echo $big_post_image_height; ?>">    <img class="progressiveMedia-thumbnail" src="<?php echo esc_url($small_post_image); ?>" title="<?php the_title();  ?>" alt="<?php the_title();  ?>" />  <canvas class="progressiveMedia-canvas"></canvas>   <img class="progressiveMedia-image" src="" data-src="<?php echo esc_url($big_post_image_src); ?>" title="<?php the_title();  ?>"  alt="<?php the_title();  ?>"/></div></div>
+
+				<?php
+			}
+			?>
+
+		</div>
+
+
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<div class="header-wrapper">
+				<div class="title-wrapper">
+					<?php smartdevices_blog_post_title(false); ?>
+				</div>
+
+				<div class="header-content">
+					<?php the_excerpt(); ?>
+				</div><!-- .header-content -->
+			</div><!-- .header-wrapper -->
+
+
 		</header><!-- .entry-header -->
-	<?php	
-	}
-	?>
-	<div class="entry-content">
-		<?php
+
+		<div class="postcontents">
+
+			<?php
 			the_content();
 
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'smartdevices' ),
 				'after'  => '</div>',
 			) );
-		?>
-	</div><!-- .entry-content -->
-
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
-				edit_post_link(
-					sprintf(
-						wp_kses(
-							/* translators: %s: Name of current post. Only visible to screen readers */
-							__( 'Edit <span class="screen-reader-text">%s</span>', 'smartdevices' ),
-							array(
-								'span' => array(
-									'class' => array(),
-								),
-							)
-						),
-						get_the_title()
-					),
-					'<span class="edit-link">',
-					'</span>'
-				);
 			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+		</div><!-- .entry-content -->
+
+	</article><!-- #post-<?php the_ID(); ?> -->
+</div>

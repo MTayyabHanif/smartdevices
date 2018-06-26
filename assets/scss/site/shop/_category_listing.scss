@@ -1,0 +1,39 @@
+// custom field.. description
+.cat_description_wrapper {
+    @media screen and (max-width: 660px) {
+        margin: 0 12px;
+    }            
+}
+.cat_description { 
+    box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.1);
+    margin: 2rem 0 4rem;
+    position: relative;
+    .description_header{ 
+        padding: 1rem 2rem;
+        box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.06);
+        h4{
+            font-weight: 500;
+            font-size: 1rem;
+            margin: 0;
+            color: #585858; 
+        }
+    }
+    .column{
+        padding: 2rem 2rem 0;
+        @media screen and (max-width: 860px) {
+            padding: 1rem 1rem 0;
+        }
+        p{
+            max-width: 684px;
+            max-width: 38rem;
+            margin-left: 0;
+            user-select: none;
+        }
+        p>strong {
+            display: block;
+            color: #0052cc;
+            padding-bottom: 0.4rem;
+            line-height: 1.15;
+        }
+    }
+}

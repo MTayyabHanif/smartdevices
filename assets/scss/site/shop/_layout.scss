@@ -18,6 +18,14 @@
         }
     }
 }
+.site-content, .content-area{
+    p:empty{
+        display: none;
+    }
+}
+.content-area{
+    width: 100%;
+}
 .site-main {
     max-width: 1480px;
     margin: 0 auto;

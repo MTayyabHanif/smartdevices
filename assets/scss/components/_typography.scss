@@ -10,7 +10,7 @@ body {
 	line-height: $line-height;
 	min-height: 100%;
 	position: relative;
-	font-weight: 300;
+	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -41,6 +41,7 @@ hr{
 //Paragraphs
 p{
 	margin-top: 0;
+	text-rendering: optimizeLegibility;
 	line-height: $font-size * $line-height;
 	@media screen and (max-width: 40em) {
 		font-size: 14px;

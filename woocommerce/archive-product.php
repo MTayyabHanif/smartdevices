@@ -62,7 +62,17 @@ get_header( 'shop' ); ?>
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked WC_Structured_Data::generate_website_data() - 30
 		 */
-		do_action( 'woocommerce_before_main_content' );
+        do_action( 'woocommerce_before_main_content' );
+        
+        // echo "<pre>";
+        // print_r($wp_query);
+        // $sorted_array = usort($wp_query->posts, function($a, $b){
+        // if ($a == $b) {
+        //         return 0;
+        //     }
+        //     return ($a < $b) ? -1 : 1;
+        // });
+        // echo "</pre>";
 	?>
 
 
@@ -86,8 +96,8 @@ get_header( 'shop' ); ?>
 				<?php woocommerce_product_subcategories(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
-
 					<?php
+                        $customm = get_post_meta($post->ID, 'product_releasing_date',true );
 						/**
 						 * woocommerce_shop_loop hook.
 						 *
@@ -106,7 +116,6 @@ get_header( 'shop' ); ?>
 				/**
 				 * woocommerce_after_shop_loop hook.
 				 *
-				 * @hooked woocommerce_pagination - 10 // removed
 				 */
 				do_action( 'woocommerce_after_shop_loop' );
 			?>
@@ -129,6 +138,8 @@ get_header( 'shop' ); ?>
 		 * woocommerce_after_main_content hook.
 		 *
 		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+		 * @hooked woocommerce_pagination -20 
+		 * @hooked cf_category_long_description -25
 		 */
 		do_action( 'woocommerce_after_main_content' );
 	?>

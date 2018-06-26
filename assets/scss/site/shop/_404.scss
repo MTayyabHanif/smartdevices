@@ -1,30 +1,60 @@
 
 /**
- * 404 Styles
- */
-.error404 {
-	.site-content .widget_product_search {
-		background-color: rgba(#000,.025);
-
-		form {
-			margin: 0;
-		}
-	}
-
-	&.right-sidebar .content-area,
-	&.left-sidebar .content-area {
-		width: 100%;
-	}
-
-	.fourohfour-columns-2 {
-		@include clearfix;
-		border: 1px solid $color-blueishlightGray;
-		border-width: 1px 0;
-
-		ul.products,
-		ul.products li.product,
-		.widget {
-			margin-bottom: 0;
-		}
-	}
+* 404 Styles
+*/
+section.error-404 {
+    padding: 0 .4rem;
+    
+    //searchbox
+    .search-form-wrapper{
+        position: static;
+        top: 0;
+        left: 0;
+        display: flex;
+        text-align: center;
+        margin: 0 auto;
+        transform: none;
+        height: auto;
+        @media screen and (max-width: 520px){
+            background-color: #fff
+        }
+        form{
+            display: flex;
+            height: auto;
+            @media screen and (max-width: 520px){
+                display: block;
+            }
+        }
+        .search-field{
+            padding-top: 12px;
+            padding-bottom: 12px;
+            height: auto;
+            line-height: 1.5;
+            font-size: 16px;
+            padding-left: 40px;
+            display: flex;
+            background-color: #f4f4f4;
+            @media screen and (max-width: 520px){
+                display: block;
+            }
+        }
+        .search-submit{
+            display: flex;
+            width: 15%;
+            margin: 0;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            height: auto;
+            background-color: #e9e9e9;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            @media screen and (max-width: 520px){
+                display: block;
+                width: 100%;
+                margin-top: 2px;
+                padding: 4px 28px;
+            }
+        }
+    }
 }

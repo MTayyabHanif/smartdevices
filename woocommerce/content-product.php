@@ -26,7 +26,7 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
-if ( is_active_sidebar( 'sidebar-2' ) && is_shop()){
+if ( is_active_sidebar( 'sidebar-2' ) && (is_shop() || is_product_category())){
 	$post_classes = 'col-xl-3 col-lg-3 col-md-4 col-sm-6 col-xs-6';
 }else{
 	$post_classes = 'col-xl-2 col-lg-3 col-md-4 col-sm-4 col-xs-6';

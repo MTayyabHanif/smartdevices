@@ -70,8 +70,8 @@ if ( ! comments_open() ) {
 						'title_reply'          => have_comments() ? __( 'Add a review', 'woocommerce' ) : sprintf( __( 'Be the first to review &ldquo;%s&rdquo;', 'woocommerce' ), get_the_title() ),
 						'title_reply_to'       => __( 'Leave a Reply to %s', 'woocommerce' ),
 						'title_reply_before'   => '<h4 id="reply-title" class="comment-reply-title">',
-						'title_reply_after'    => '</h4>',
-						'comment_notes_before'  => '<div class="row with-gutters">',
+						'title_reply_after'    => '</h4><div class="row with-gutters">',
+						'comment_notes_before'  => '',
 						'comment_notes_after'  => '',
 						'fields'               => array(
 							'author' => '<div class="col col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"><div class="form-item comment-form-author">' . '<label for="author">' . esc_html__( 'Name', 'woocommerce' ) . ' <span class="req">*</span></label> ' .
@@ -96,10 +96,10 @@ if ( ! comments_open() ) {
 							<option value="3">' . esc_html__( 'Average', 'woocommerce' ) . '</option>
 							<option value="2">' . esc_html__( 'Not that bad', 'woocommerce' ) . '</option>
 							<option value="1">' . esc_html__( 'Very poor', 'woocommerce' ) . '</option>
-						</select></div>';
+						</select></div><!-- .comment-form-rating -->';
 					}
 
-					$comment_form['comment_field'] .= '<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><div class="form-item comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'woocommerce' ) . ' <span class="req">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></div></div>';
+					$comment_form['comment_field'] .= '<div class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="comment-textarea"><div class="form-item comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'woocommerce' ) . ' <span class="req">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" required></textarea></div></div><!-- #comment-textarea --></div>';
 
 					comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
 				?>

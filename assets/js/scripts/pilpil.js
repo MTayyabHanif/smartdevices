@@ -64,7 +64,7 @@
 		
 		img.onload = function () {
 			// draw canvas
-			stackBlurImage(progressiveMedia.querySelector('.progressiveMedia-thumbnail'), progressiveMedia.querySelector('.progressiveMedia-canvas'), 5);
+			stackBlurImage(progressiveMedia.querySelector('.progressiveMedia-thumbnail'), progressiveMedia.querySelector('.progressiveMedia-canvas'), 15);
 			// load canvas visible
 			progressiveMedia.classList.add('is-canvasLoaded');
 		};
@@ -76,11 +76,11 @@
 			$selfOffset = $self.offset(),
 			$notLoadedYet = $self.attr("src");
 			if ($notLoadedYet == undefined || $notLoadedYet == "") {
-				var img = new Image();
-				img.src = $self.attr("data-src");
-				
-				img.onload = function () {
-					if($self.inView()) {
+                if($self.inView()) {
+                    var img = new Image();
+                    img.src = $self.attr("data-src");
+                    
+                    img.onload = function () {
 						$self.attr('src',$self.attr('data-src'));
 						// show image visible
 						setTimeout(function() {

@@ -31,7 +31,7 @@
 	font-weight: 400;
 	max-width: 1480px;
 	margin: 0 auto;
-	padding: 2rem;
+	padding: 1rem 2rem;
 	
 	@media screen and (max-width: 1100px) {
 		font-size: 10px;
@@ -87,6 +87,13 @@
 
 
 
+
+
+
+
+
+
+// main product wrapper
 main>.product {
 	img{flex-shrink: 0;}
 	.image-desc-wrapper.short-section{
@@ -99,14 +106,17 @@ main>.product {
 		-webkit-box-pack: justify;
 		-ms-flex-pack: justify;
 		justify-content: space-between;
+        flex-basis: 100%;
+        max-width: 100%;
 		
 		@media screen and (max-width: 1100px) {
-                  display: block;
+			display: block;
 		} 
-            @media screen and (max-width: 600px) {
-                  margin: 0 6px 6px;
-                  border: 1px solid #ccc;
-            }
+		@media screen and (max-width: 600px) {
+			margin: 0 6px 6px;
+            border: 1px solid #ccc;
+            width: 95%;
+		}
 	} 
 	
 	
@@ -116,16 +126,17 @@ main>.product {
 		cursor: zoom-in;
 	}
 	.woocommerce-product-gallery{
-		flex-basis: 40%;
+        flex-basis: 40%;
+        max-height: 740px;
 		max-width: 600px;
 		padding: 2rem 0;
-            padding-left: 1rem;
-            overflow: hidden;
+		padding-left: 1rem;
+		overflow: hidden;
 		@media screen and (max-width: 1100px) {
 			flex-basis: 100%;
 			max-width: 100%;
 			padding: 0;
-		}			
+        }
 		.flex-control-nav{
 			margin: 0 auto;
 			max-width: 90%;
@@ -223,8 +234,8 @@ main>.product {
 		}
 	}
 	.woocommerce-product-gallery, .entry-summary{
-            position: relative;
-            overflow: hidden;
+		position: relative;
+		overflow: hidden;
 	}
 	
 	
@@ -267,15 +278,29 @@ main>.product {
 	
 	// Woo Tabs long decriptions and reviews
 	.wc-tabs-wrapper{
-		*{font-weight: 400;}
-		
+        p, span, a, li{font-weight: 400;}
+        flex-basis: 100%;
+        max-width: 100%;
+		@media screen and (min-width: 1020px) {
+            flex-basis: 81%;
+            max-width: 81%;
+        }
 		margin-top: 28px;
-		background-color: #fff;
-            box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.10);
-            @media screen and (max-width: 600px) {
-                  margin: 20px 6px 6px;    
-                  border: 1px solid #ccc;
+		@media screen and (max-width: 600px) {
+			margin: 20px 6px 6px;    
+			border: 1px solid #ccc;
+        }
+        .desc-footer{
+            text-align: center;
+            margin: 17px 0 -10px;
+            vertical-align: bottom;
+            span{
+                font-size: 12px;
+                display: inline-block;
+                margin-left: 2px;
+                vertical-align: middle;
             }
+        }
 	}
 	
 	ul.wc-tabs{
@@ -310,7 +335,13 @@ main>.product {
 				border-bottom: 3px solid $primary;
 			}
 		}
-	}
+    }
+    
+    div.wc-tab {
+        background-color: #fff;
+        box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.1);
+        padding: 2rem 0;
+    }
 }
 
 
@@ -320,12 +351,50 @@ main>.product {
 
 
 // description - styles
-section.description{
-      .img_wrapper{
-            .aspectRatioPlaceholder{
-                  max-width: 310px;
+.wc-tabs-wrapper section{
+	.img_wrapper{
+		.aspectRatioPlaceholder{
+            &.w-200{
+                max-width: 310px;
             }
-      }
+            &.w-300{
+                max-width: 310px;
+            }
+            &.w-450{
+                max-width: 310px;
+            }
+            &.w-600{
+                max-width: 310px;
+            }
+		}
+    }
+    .row, .col-xs-12{
+        position: relative;
+        z-index: 2;
+    }
+    div.bg{
+        position: absolute;
+        overflow: hidden;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        box-sizing: border-box;
+        @media only screen and (max-width: 768px){
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 0;
+            flex-shrink: 0;
+            min-height: 1px;
+            position: static;
+            -webkit-box-ordinal-group: 2;
+            -ms-flex-order: 1;
+            order: 1;
+        }
+    }
 }
 
 
@@ -342,66 +411,73 @@ section.description{
 // specifications tabs styles
 .yikes-custom-woo-tab-title.yikes-custom-woo-tab-title-specifications{display: none;}
 h2.specs-titles {
-	display: table;
-	margin: 3rem auto 1rem;
-	font-size: 18px;
-	font-weight: 500 !important;
-	@media screen and (min-width: 520px){
-		font-size: 1.6rem;
-	}
+    display: table;
+    margin: 3rem auto 1rem;
+    font-size: 18px;
+    font-weight: 500 !important;
+    @media screen and (min-width: 520px){
+        font-size: 1.6rem;
+    }
 }
 .specs-body-wrapper{
-	p{display: none;}
-	.group-wrapper{
-		padding: 2rem;
-		@media screen and (max-width:992px){
-			padding: 1rem;
-		}		
-		@media screen and (max-width:768px){
-			padding: 0 1rem;
-		}
-		h3{
-			margin-bottom: 1.2em;
-			text-transform: capitalize;
-			font-weight: 600 !important;
-			font-size: 1rem;
-			color: $primary;
-			span.heading-icon {
-				padding: 4px 8px 0;
-				display: inline-block;
-				vertical-align: -1px;
-				border: 1px solid grey;
-				border-radius: 2px;
-				margin-right: 8px;
-			}
-		}
-	}
-	dl{
-		display: table;
-		width: 100%;
-		margin-top: 0;
-		margin-bottom: 1em;
-		padding-bottom: 1em;
-		line-height: 1.5;
-		font-size: 12px;
-		>div{
-			display: table-row;
-			dd, dt{margin: 0; padding: 4px 0;text-indent: 0;}
-			dt{
-				display: table-cell;
-				color: #888;
-				font-weight: 500 !important;
-				width: 40%;
-				@media screen and (min-width: 520px){
-					width: 30%;
-				}
-			}
-			dd{
-				display: table-cell;
-				padding: 0 1em;
-			}
-		}
-	}
+    p{display: none;}
+    .group-wrapper{
+        padding: 2rem;
+        @media screen and (max-width:992px){
+            padding: 1rem;
+        }		
+        @media screen and (max-width:768px){
+            padding: 0 1rem;
+        }
+        h3{
+            margin-bottom: 1.2em;
+            text-transform: capitalize;
+            font-weight: 600 !important;
+            font-size: 1rem;
+            color: $primary;
+            span.heading-icon {
+                padding: 4px 8px 0;
+                display: inline-block;
+                vertical-align: -1px;
+                border: 1px solid grey;
+                border-radius: 2px;
+                margin-right: 8px;
+                transition: all .2s ease-in-out;
+            }
+        }
+    }
+    dl{
+        display: table;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+        line-height: 1.5;
+        font-size: 14px;
+        >div{
+            display: table-row;
+            dd, dt{margin: 0; padding: 6px 0;text-indent: 0;}
+            dt{
+                display: table-cell;
+                color: #888;
+                font-weight: 500 !important;
+                width: 40%;
+                @media screen and (min-width: 520px){
+                    width: 30%;
+                }
+            }
+            dd{
+                display: table-cell;
+                font-weight: 400;
+                padding: 0 1em;
+            }
+        }
+    }
+    .col-xl-4.col-lg-4.col-md-6.col-sm-12.col-xs-12:hover .heading-icon{
+        background-color: $primary;
+        color: white;
+        border-color: $primary;
+    }
 }
 
 
@@ -427,20 +503,48 @@ h2.specs-titles {
 
 // RELATED PRODUCTS
 .related.products{
-	>h2{
-		text-align: center;
-            margin-top: 8rem;
-            @media screen and (max-width: 600px) {
-                  margin-top: 3rem;
-            }                  
-		&:after{
-			content: "";
-			width: 20%;
-			height: 3px;
-			display: block;
-			position: relative;
-			background-color: $primary;
-			margin: 1rem auto 3rem;
-		}
-	}
+    flex-basis: 100%;
+    max-width: 100%;
+    >h2{
+        text-align: center;
+        margin-top: 8rem;
+        @media screen and (max-width: 600px) {
+            margin-top: 3rem;
+        }                  
+        &:after{
+            content: "";
+            width: 20%;
+            height: 3px;
+            display: block;
+            position: relative;
+            background-color: $primary;
+            margin: 1rem auto 3rem;
+        }
+    }
+    @media screen and (min-width: 1020px) {
+        margin-top: 28px;
+        flex-basis: 19%;
+        max-width: 19%;    
+        padding-left: 12px;
+        >h2{
+            margin-top: 28px;
+            background-color: #fff;
+            box-shadow: 0 1px 1px 1px rgba(34, 35, 36, 0.1);
+            text-align: center;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 10px 28px 11px;
+            &:after{
+                content: none;
+            }
+        }
+        .row.products-list>li.product{
+            flex-basis: 100% !important;
+            max-width: 100% !important;
+            .product-loop-link-wrapper {
+                margin: 20px 18px 0;
+            }
+        }
+    }
 }

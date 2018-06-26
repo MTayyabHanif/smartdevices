@@ -4,8 +4,8 @@
 
 // primary colors
 $primary:       #0052CC !default;
-$primary-light:  lighten($primary, 10%) !default;
-$primary-dark:  darken($primary, 5%) !default;
+$primary-light:  lighten($primary, 25%) !default;
+$primary-dark:  darken($primary, 10%) !default;
 
 $secondary:       #172B4D !default;
 $secondary-light:  lighten($secondary, 10%) !default;
@@ -68,3 +68,34 @@ $warning: $color-warning;
 
 $color-focus: #2684FF !default;
 $focus: $color-focus;
+
+
+
+
+
+/* SOCIAL */
+
+$twitter_color: #55acee;
+$facebook_color: #3b5998;
+$google_color: #dd4b39;
+$dribbble_color: #ea4c89;
+$instagram_color: #3f729b;
+$github_color: #333;
+$github_color_light: #999999;
+$rss_color: #ee802f;
+$youtube_color: #c4302b;
+$pinterest_color: #c8232c;
+$linkedin_color: #0e76a8;
+$reddit_color: #5f99cf;
+$skype_color: #00aff0;
+$tumblr_color: #35465c;
+$vine_color: #00b488;
+$vk_color: #45668e;
+$flickr_color: #ff0084;
+$stackoverflow_color: #fe7a15;
+$twitch_color: #6441a5;
+$vimeo_color: #1ab7ea;
+$weibo_color: #d72928;
+$email_color: #76b852;
+$soundcloud_color: #ff8800;
+$slideshare_color: #0077b5;

@@ -20,6 +20,7 @@ if ( post_password_required() ) {
 }
 ?>
 
+<div id="comments-wrap" class="comments-wrapper">
 <div id="comments" class="comments-area">
 
 	<?php
@@ -37,9 +38,8 @@ if ( post_password_required() ) {
 			} else {
 				printf( // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $comment_count, 'comments title', 'smartdevices' ) ),
-					number_format_i18n( $comment_count ),
-					'<span>' . get_the_title() . '</span>'
+					esc_html( _nx( '%1$s Comment', '%1$s Comments', $comment_count, 'comments title', 'smartdevices' ) ),
+					number_format_i18n( $comment_count )
 				);
 			}
 			?>
@@ -52,6 +52,7 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'avatar_size' => 65,
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -70,3 +71,4 @@ if ( post_password_required() ) {
 	?>
 
 </div><!-- #comments -->
+</div><!-- #comments-wrap -->

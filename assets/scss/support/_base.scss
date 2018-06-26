@@ -13,6 +13,7 @@
  	line-height: 1.15; /* 1 */
  	-ms-text-size-adjust: 100%; /* 2 */
  	-webkit-text-size-adjust: 100%; /* 2 */
+ 	text-rendering: optimizeLegibility;
  }
 
 /* Sections
@@ -24,6 +25,7 @@
 
  body {
  	margin: 0;
+ 	text-rendering: optimizeLegibility;
  }
 
 /**
@@ -36,6 +38,7 @@
  header,
  nav,
  section {
+ 	text-rendering: optimizeLegibility;
  	display: block;
  }
 

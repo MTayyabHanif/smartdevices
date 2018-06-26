@@ -1,11 +1,11 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "C:\\xampp\\htdocs\\personal\\wp-content\\plugins\\woocommerce"
-		}
-	],
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "C:\\xampp\\htdocs\\personal\\wp-content\\plugins\\woocommerce"
+        }
+    ],
 	"settings": {}
 }

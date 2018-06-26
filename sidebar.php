@@ -16,7 +16,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) && ! is_active_sidebar( 'sidebar-2' ) ) 
 
 
 <?php
-if ( is_active_sidebar( 'sidebar-1' ) && !is_woocommerce()) {
+if ( is_active_sidebar( 'sidebar-1' ) && !is_woocommerce()  && !is_front_page() && !is_home()) {
 ?>
 
 <aside id="secondary" class="widget-area col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-12 last-xs">
@@ -33,7 +33,7 @@ if ( is_active_sidebar( 'sidebar-1' ) && !is_woocommerce()) {
 
 
 <?php
-if ( is_active_sidebar( 'sidebar-2' ) && is_woocommerce() && !is_product() ) {
+if ( is_active_sidebar( 'sidebar-2' ) && is_woocommerce() && !is_product() && !is_front_page() && !is_home() ) {
 ?>
 
 <aside id="secondary" class="woo-sidebar widget-area col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-12 last-xs">
